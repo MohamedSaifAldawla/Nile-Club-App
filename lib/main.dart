@@ -25,7 +25,7 @@ void main() async {
   await init();
   GetThemeMode();
 
-  //------------- Firebase2 ---------------//
+  //------------- Firebase ---------------//
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
