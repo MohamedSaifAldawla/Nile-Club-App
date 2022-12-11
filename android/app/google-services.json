@@ -1,0 +1,263 @@
+{
+  "project_info": {
+    "project_number": "610135609560",
+    "firebase_url": "https://cashaman-bd5c5.firebaseio.com",
+    "project_id": "cashaman-bd5c5",
+    "storage_bucket": "cashaman-bd5c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610135609560:android:e6c6813d79d6c6bdfd87ad",
+        "android_client_info": {
+          "package_name": "agent.cadhb.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsNu8kE7m1VvWm2i33vVfsbwE4ZL-o5Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610135609560-ld8p7lcnue8jbd2k3jqg7m4tdki7m1fi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nileClub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610135609560:android:1cc9fc57406d4a1efd87ad",
+        "android_client_info": {
+          "package_name": "chat.pcpos.co"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsNu8kE7m1VvWm2i33vVfsbwE4ZL-o5Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610135609560-ld8p7lcnue8jbd2k3jqg7m4tdki7m1fi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nileClub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610135609560:android:c6a5ad338d75b222",
+        "android_client_info": {
+          "package_name": "com.pcpos.co.cashaman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsNu8kE7m1VvWm2i33vVfsbwE4ZL-o5Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610135609560-ld8p7lcnue8jbd2k3jqg7m4tdki7m1fi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nileClub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610135609560:android:cf3e50faa10ef40bfd87ad",
+        "android_client_info": {
+          "package_name": "com.pcpos.co.cpay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsNu8kE7m1VvWm2i33vVfsbwE4ZL-o5Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610135609560-ld8p7lcnue8jbd2k3jqg7m4tdki7m1fi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nileClub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610135609560:android:e1da1aa78e4b73ebfd87ad",
+        "android_client_info": {
+          "package_name": "com.pcpos.co.qpay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsNu8kE7m1VvWm2i33vVfsbwE4ZL-o5Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610135609560-ld8p7lcnue8jbd2k3jqg7m4tdki7m1fi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nileClub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610135609560:android:d15b481ce36264e2fd87ad",
+        "android_client_info": {
+          "package_name": "dhb.cadhb.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsNu8kE7m1VvWm2i33vVfsbwE4ZL-o5Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610135609560-ld8p7lcnue8jbd2k3jqg7m4tdki7m1fi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nileClub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610135609560:android:e5077771a8e1a2d6fd87ad",
+        "android_client_info": {
+          "package_name": "nile.cashaman.net"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsNu8kE7m1VvWm2i33vVfsbwE4ZL-o5Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610135609560-e3p20jivhfsdns9r2p6aef409lis0ug8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610135609560-ld8p7lcnue8jbd2k3jqg7m4tdki7m1fi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nileClub"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
