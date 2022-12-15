@@ -193,7 +193,8 @@ class ServiceTicketInfo extends StatelessWidget {
                               BodyText(
                                 text:
                                     "${servicesController.serviceReserve['output_available_balance']} "
-                                    "SDG",
+                                            "SDG"
+                                        .tr,
                                 weight: FontWeight.bold,
                                 fontSize: 18,
                                 color: success,

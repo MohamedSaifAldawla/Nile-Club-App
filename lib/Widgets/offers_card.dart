@@ -68,13 +68,13 @@ class OffersCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BodyText(
-                      text: "New price".tr + newPrice + " SDG",
+                      text: "New price".tr + newPrice + "SDG".tr,
                       fontSize: getProportionateScreenWidth(15),
                       weight: FontWeight.bold,
                     ),
                     const Gap(3),
                     BodyText(
-                      text: "Original".tr + discount + " SDG ",
+                      text: "Original".tr + discount + "SDG".tr,
                       fontSize: getProportionateScreenWidth(14),
                       color: kSecondaryColor,
                     ),

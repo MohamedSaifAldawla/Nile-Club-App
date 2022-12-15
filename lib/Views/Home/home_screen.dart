@@ -82,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   vertical: getProportionateScreenHeight(25)),
                               physics: BouncingScrollPhysics(),
-                              itemCount: 3,
+                              itemCount: 5,
                               itemBuilder: (context, index) => GestureDetector(
                                 onTap: () => Get.to(
                                   () => ServiceDetails(
@@ -212,7 +212,7 @@ class HomeScreen extends StatelessWidget {
                                     vertical: getProportionateScreenWidth(25),
                                   ),
                                   physics: BouncingScrollPhysics(),
-                                  itemCount: 3,
+                                  itemCount: 5,
                                   itemBuilder: (context, index) =>
                                       GestureDetector(
                                     onTap: () {

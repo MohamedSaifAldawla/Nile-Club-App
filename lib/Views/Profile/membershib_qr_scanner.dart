@@ -46,9 +46,7 @@ class _MembershipQRState extends State<MembershipQR> {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
-          Expanded(
-            child: _buildQrView(context),
-          ),
+          _buildQrView(context),
           Padding(
             padding: const EdgeInsets.all(50.0),
             child: SeconderyButton3(

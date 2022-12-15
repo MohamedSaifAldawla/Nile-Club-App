@@ -89,7 +89,7 @@ class ServiceDetails extends StatelessWidget {
                         ),
                         Spacer(),
                         BodyText(
-                          text: "${services.totalPrice} " "SDG",
+                          text: "${services.totalPrice} " + "SDG".tr,
                           weight: FontWeight.bold,
                           fontSize: getProportionateScreenWidth(18),
                           color: success,
@@ -194,7 +194,7 @@ class ServiceDetails extends StatelessWidget {
                         ),
                         Spacer(),
                         BodyText(
-                          text: "${services.totalPrice} " "SDG",
+                          text: "${services.totalPrice} " + "SDG".tr,
                           weight: FontWeight.bold,
                           fontSize: getProportionateScreenWidth(18),
                           color: success,

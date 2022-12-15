@@ -107,7 +107,7 @@ Widget TransCard2(Transaction transaction, context) {
                     ),
                     Spacer(),
                     BodyText(
-                      text: "${transaction.outputAmount}" " SDG",
+                      text: "${transaction.outputAmount}" + "SDG".tr,
                       weight: FontWeight.bold,
                       color: transaction.output == "Approved" ? success : gold,
                     ),

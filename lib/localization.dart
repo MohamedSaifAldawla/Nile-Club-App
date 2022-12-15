@@ -228,6 +228,7 @@ class Localization implements Translations {
           "Extra fees": "Extra fees :",
           "Transaction id": "Transaction id :",
           "Saved successfully": "Saved successfully",
+          'SDG': ' SDG',
           //----------------------------------- State Page -------------------------//
           "Successfull": "Completed Successfully",
           "Error": "Error",
@@ -473,6 +474,7 @@ class Localization implements Translations {
           "Extra fees": "منصرفات إضافيه :",
           "Transaction id": "رقم المعامله :",
           "Saved successfully": "تم الحفظ بنجاح",
+          'SDG': ' جنيه',
           //----------------------------------- State Page -------------------------//
           "Successfull": "نجاح",
           "Error": "خطأ",

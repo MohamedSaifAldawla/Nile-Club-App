@@ -78,7 +78,7 @@ class Wallet extends StatelessWidget {
                                   : yellow),
                     ),
                     Text(
-                      ' SDG',
+                      'SDG'.tr,
                       style: TextStyle(
                           fontSize: getProportionateScreenWidth(20),
                           fontWeight: FontWeight.w500,
@@ -219,7 +219,7 @@ class Wallet2 extends StatelessWidget {
                                   : yellow),
                     ),
                     Text(
-                      ' SDG',
+                      'SDG'.tr,
                       style: TextStyle(
                           fontSize: getProportionateScreenWidth(20),
                           fontWeight: FontWeight.w500,

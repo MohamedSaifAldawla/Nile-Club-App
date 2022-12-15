@@ -128,6 +128,7 @@ class AuthController extends GetxController with BaseController {
           ),
           success,
           SnackPosition.TOP);
+      Get.back();
     }
 
     hideLoading();

@@ -709,7 +709,7 @@ class _SubscribeScreenState extends State<SubscribeScreen> {
                                   personalImg = '';
                                   personalId = '';
                                   GetStorage().read('formid');
-                                  membershipStatus = 'Exist';
+                                  membershipStatus = 'none';
                                 },
                               )
                             },
