@@ -242,7 +242,7 @@ Widget TicketCard(Transaction transaction, context) {
                         ),
                         Spacer(),
                         BodyText(
-                          text: "${transaction.outputQty}" + "person".tr,
+                          text: "${transaction.outputQty}",
                           weight: FontWeight.bold,
                         ),
                       ],

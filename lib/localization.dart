@@ -458,9 +458,8 @@ class Localization implements Translations {
           "News Details": "تفاصيل الخبر",
           //----------------------------------- Ticket Info -------------------------//
           "successfully booked": "لقد تم حجز التذكره بنجاح",
-          "Status": "حالة التذكره",
+          "Status": "حالة التذكره :",
           "Amount": "القيمة : ",
-          "Add Amount": "Amount",
           "Name": "الإسم : ",
           "family": "عائله",
           "Phone no": "رقم الهاتف : ",
@@ -485,7 +484,7 @@ class Localization implements Translations {
           "Extra fees": "منصرفات إضافية :",
           "Transaction id": "رقم المعاملة :",
           "Saved successfully": "تم الحفظ بنجاح",
-          'SDG': ' جنيه',
+          'SDG': ' جنية',
           //----------------------------------- State Page -------------------------//
           "Successfull": "نجاح",
           "Error": "خطأ",
