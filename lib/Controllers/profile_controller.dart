@@ -209,7 +209,7 @@ class ProfileController extends GetxController with BaseController {
     hideLoading();
     print("Activate : $res");
     if (res['statuscode'] == 0) {
-      hideLoading();
+      Get.back();
       SnackBar(
           "Success".tr,
           res['message'],
@@ -219,10 +219,9 @@ class ProfileController extends GetxController with BaseController {
           ),
           success,
           SnackPosition.TOP);
-      Get.back();
     }
     if (res['statuscode'] == 3) {
-      hideLoading();
+      Get.back();
       SnackBar(
           "Error".tr,
           res['message'],
