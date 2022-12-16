@@ -20,7 +20,7 @@ class AllNewsScreen extends StatelessWidget {
       ),
       body: Obx(
         () => Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 5),
           child: blogsController.isLoading.value
               ? Center(child: Loader())
               : Column(
