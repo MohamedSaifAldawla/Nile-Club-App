@@ -219,7 +219,7 @@ class ProfileController extends GetxController with BaseController {
           ),
           success,
           SnackPosition.TOP);
-      //authController.logout();
+      Get.back();
     }
     if (res['statuscode'] == 3) {
       hideLoading();
