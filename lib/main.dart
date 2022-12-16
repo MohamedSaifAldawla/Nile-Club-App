@@ -59,7 +59,6 @@ void main() async {
   //------------- Internet Connection ---------------//
   if (result == true) {
     print('Connected');
-    //await Applive();
     runApp(MyApp());
   } else {
     await GetStorage().write("Live", null);

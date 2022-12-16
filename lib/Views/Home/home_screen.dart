@@ -135,7 +135,6 @@ class HomeScreen extends StatelessWidget {
                           service: "Services".tr,
                           onTap: () {
                             servicesController.getServices();
-                            //Get.toNamed("services");
                           },
                         ),
                         ServicesItem(
@@ -145,7 +144,6 @@ class HomeScreen extends StatelessWidget {
                           service: "Cinema".tr,
                           onTap: () {
                             servicesController.getCinema();
-                            // Get.toNamed("cinema");
                           },
                         ),
                         ServicesItem(
@@ -155,7 +153,6 @@ class HomeScreen extends StatelessWidget {
                           service: "Offers".tr,
                           onTap: () {
                             servicesController.getOffers();
-                            // Get.toNamed("offers");
                           },
                         ),
                         ServicesItem(
