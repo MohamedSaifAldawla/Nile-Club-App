@@ -125,7 +125,7 @@ class _TransferQRState extends State<TransferQR> {
                           },
                           icon: SvgPicture.asset(
                             "assets/icons/Cancel.svg",
-                            color: kTextColor,
+                            color: error,
                             width: 20,
                             height: 20,
                           ),

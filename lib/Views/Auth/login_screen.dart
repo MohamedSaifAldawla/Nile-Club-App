@@ -241,7 +241,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 text: "Forgot Password".tr,
                                 color: kPrimaryColor,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -287,6 +287,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           press: () {
                             Get.toNamed("register");
                           },
+                        ),
+                      ),
+                      const Gap(20),
+                      FadeAnimation(
+                        2.2,
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("redeem");
+                          },
+                          child: BodyText(
+                            text: "Redeem account".tr,
+                            color: kPrimaryColor,
+                          ),
                         ),
                       ),
                       // const Gap(20),

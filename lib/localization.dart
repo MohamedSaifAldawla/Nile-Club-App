@@ -50,6 +50,10 @@ class Localization implements Translations {
           "Login with your Username": "Login with your Username and password",
           "Remember me": "Remember me",
           "Forgot Password": "Forgot Password ?",
+          "Redeem Account": "Redeem Account",
+          "Verification code": "Verification code",
+          "OTP Verification": "OTP Verification",
+          "Verification body": "We texted you a code please enter it below",
           "Please Enter your Last name": "Please enter your Last name",
           "Please Enter Valid Username": "Please enter valid username",
           "Please Enter your password": "Please enter your password",
@@ -64,6 +68,7 @@ class Localization implements Translations {
           "By continuing":
               "By continuing you confirm that you agree with our terms and conditions",
           "Reset": "Reset",
+          "ٌRedeem": "ٌRedeem",
           "Reset Password": "Reset Password",
           "New password sent to your phone number":
               "New password sent to your phone number",
@@ -166,7 +171,8 @@ class Localization implements Translations {
               "Please complete the form below to join our membership",
           "Your application is under processing":
               "Your application is under processing",
-          "Upload Personal Photo": "Upload Personal Photo",
+          "Upload Personal Photo":
+              "Please upload Personal Photo have a white background",
           "Personal Photo not selected": "Personal Photo not uploaded",
           "Upload Personal identification": "Upload Personal identification",
           "Personal ID not selected": "Personal ID not uploaded",
@@ -295,6 +301,7 @@ class Localization implements Translations {
           "Adult": "بالغ",
           "Child": "طفل",
           "Occupation": "العمل",
+          "Enter your Occupation": "قم بإدخال نوع العمل",
           "Enter your Phone": "قم بإدخال رقم هاتفك",
           "Please Enter your Phone": "الرجاء قم بإدخال رقم هاتفك",
           "Phone number is too short": "رقم الهاتف اقل من 10",
@@ -310,6 +317,11 @@ class Localization implements Translations {
               "قم بتسجيل دخولك عن طريق كتابة إسم المستخدم وكلمة المرور",
           "Remember me": "حفظ بيانات الدخول",
           "Forgot Password": "هل نسيت كلمة المرور ؟",
+          "Redeem Account": "إستعاده الحساب المحذوف",
+          "OTP Verification": "التحقق",
+          "Verification code": "رمز التحقق",
+          "Verification body":
+              "لقد ارسلنا اليك رساله نصيه في رقم هاتفك الرجال إدخاله في الأسفل",
           "Please Enter your Last name": "الرجاء قم بإدخال الإسم الأخير",
           "Please Enter your Username": "الرجاء إدخال إسم المستحدم",
           "Please Enter Valid Username": "الرجاء إدخال إسم المستخدم بشكل صحيح",
@@ -324,6 +336,7 @@ class Localization implements Translations {
           "By continuing":
               "مواصلتك التسجيل سوف تؤكد لنا انك توافق علي الشروط والأحكام",
           "Reset": "إستعادة كلمة المرور",
+          "ٌRedeem": "إستعاده الحساب",
           "Reset Password": "إستعادة كلمة المرور",
           "Reset Pass Body":
               "الرجاء إدخال رقم الهاتف  \n وسوف نقوم بإرسال رابط لإستعادة كلمة المرور",
@@ -422,7 +435,8 @@ class Localization implements Translations {
               "الرجاء ملء الفورم ادناة لطلب الإنضمام",
           "Your application is under processing":
               "ستم إرسال البيانات وسوف يتم معاينة طلب العضوية",
-          "Upload Personal Photo": "قم برفع الصوره الشخصية",
+          "Upload Personal Photo":
+              "الرجاء رفع صوره شخصية تحتوي علي خلفيه بيضاء",
           "Personal Photo not selected": "لم يتم رفع الصوره الشخصية",
           "Upload Personal identification": "قم برفع إثبات الشخصية",
           "Personal ID not selected": "لم يتم رفع إثبات الشخصية",

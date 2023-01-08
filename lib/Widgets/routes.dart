@@ -17,6 +17,8 @@ import 'package:nile_club/Views/Profile/family_screen.dart';
 import 'package:nile_club/Views/Profile/membership_list_screen.dart';
 import '../Views/Auth/intro_screen.dart';
 import '../Views/Auth/login_screen.dart';
+import '../Views/Auth/otp_screen.dart';
+import '../Views/Auth/redeem_account_screen.dart';
 import '../Views/Auth/register_screen.dart';
 import '../Views/Auth/resetpass_screen.dart';
 import '../Views/Auth/splash_screen.dart.dart';
@@ -48,6 +50,8 @@ List<GetPage<dynamic>> routes = [
   ),
   GetPage(name: "/register", page: () => const RegisterScreen()),
   GetPage(name: "/reset", page: () => const ResetPasswordScreen()),
+  GetPage(name: "/redeem", page: () => const RedeemAccountScreen()),
+  GetPage(name: "/otp", page: () => OTPScreen()),
   GetPage(name: "/auth", page: () => const FingerAuthScreen()),
   GetPage(name: "/homepage", page: () => HomePage()),
   GetPage(name: "/home", page: () => HomeScreen()),

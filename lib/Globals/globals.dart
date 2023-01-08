@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -9,6 +10,8 @@ import '../Controllers/profile_controller.dart';
 import '../Controllers/services_controller.dart';
 import '../Controllers/trans_controller.dart';
 import '../Controllers/wallet_controller.dart';
+import '../size_config.dart';
+import '../theme.dart';
 
 //-------------------------- Controllers -------------------//
 AuthController authController = Get.find<AuthController>();
@@ -56,3 +59,20 @@ Future<void> init() async {
   img = await GetStorage().read('img');
   isLive = GetStorage().read("Live");
 }
+
+final otpInputDecoration = InputDecoration(
+  contentPadding:
+      EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
+    borderSide: BorderSide(color: kTextColor),
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
+    borderSide: BorderSide(color: kTextColor),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
+    borderSide: BorderSide(color: kTextColor),
+  ),
+);

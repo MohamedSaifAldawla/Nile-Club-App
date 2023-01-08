@@ -224,6 +224,38 @@ class Api {
     return dio.post('/resetPassword', data: formData);
   } //end of Reset Password
 
+  //--------------------- Redeem Account --------------------------//
+
+  static Future<Response> RedeemAccount({
+    required String phone,
+  }) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'phone': phone,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/reActivate', data: formData);
+  } //end of Redeem Account
+
+  //---------------------Verification--------------------------//
+
+  static Future<Response> Verification({
+    required String phone,
+    required String otp,
+  }) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'phone': phone,
+        'otp': otp,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/verification', data: formData);
+  } //end of Redeem Account
+
 //--------------------- Get Users --------------------------//
 
   static Future<Response> getUsers() async {
