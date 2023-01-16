@@ -171,8 +171,8 @@ class Localization implements Translations {
               "Please complete the form below to join our membership",
           "Your application is under processing":
               "Your application is under processing",
-          "Upload Personal Photo":
-              "Please upload Personal Photo have a white background",
+          "Upload Personal Photo": "Please upload Personal Photo",
+          "Upload Personal background": "Upload Photo have a white background",
           "Personal Photo not selected": "Personal Photo not uploaded",
           "Upload Personal identification": "Upload Personal identification",
           "Personal ID not selected": "Personal ID not uploaded",
@@ -435,8 +435,8 @@ class Localization implements Translations {
               "الرجاء ملء الفورم ادناة لطلب الإنضمام",
           "Your application is under processing":
               "ستم إرسال البيانات وسوف يتم معاينة طلب العضوية",
-          "Upload Personal Photo":
-              "الرجاء رفع صوره شخصية تحتوي علي خلفيه بيضاء",
+          "Upload Personal Photo": "الرجاء رفع الصوره الشخصية",
+          "Upload Personal background": "رفع صوره تحتوي علي خلفيه بيضاء",
           "Personal Photo not selected": "لم يتم رفع الصوره الشخصية",
           "Upload Personal identification": "قم برفع إثبات الشخصية",
           "Personal ID not selected": "لم يتم رفع إثبات الشخصية",

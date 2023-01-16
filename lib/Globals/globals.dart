@@ -31,6 +31,7 @@ var phone;
 var token;
 var accountId;
 var isMember;
+var formId;
 var serial;
 var membership;
 var exDate;
@@ -53,6 +54,7 @@ Future<void> init() async {
   token = await GetStorage().read('login_token');
   accountId = await GetStorage().read('account_id');
   isMember = await GetStorage().read('isMember');
+  formId = await GetStorage().read('formid');
   serial = await GetStorage().read('serial');
   membership = await GetStorage().read('membership');
   exDate = await GetStorage().read('ex_date');

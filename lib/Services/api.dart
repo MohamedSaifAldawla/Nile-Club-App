@@ -140,75 +140,6 @@ class Api {
     return dio.post('/updateProfile', data: formData);
   } //end of Account Update
 
-  //--------------------- Delete Account --------------------------//
-
-  static Future<Response> DeleteAccount() async {
-    FormData formData = FormData.fromMap(
-      {
-        'lang': lang,
-        'userid': uid,
-        'token': token,
-        'app_version': app_version,
-      },
-    );
-    return dio.post('/deleteAccount', data: formData);
-  } //end of Delete Account
-
-  //--------------------- Subscribe --------------------------//
-
-  static Future<Response> Subscribe({subscribeData}) async {
-    FormData formData = FormData.fromMap(
-      {
-        'lang': lang,
-        'userid': uid,
-        'token': token,
-        'app_version': app_version,
-        'name': subscribeData['name'],
-        'type': subscribeData['type'],
-        'address': subscribeData['address'],
-        'dofb': subscribeData['dofb'],
-        'gender': subscribeData['gender'],
-        'months': subscribeData['months'],
-        'membership_status': subscribeData['membership_status'],
-        'membership_id': subscribeData['membership_id'],
-        'email': subscribeData['email'],
-        'phone': subscribeData['phone'],
-        'occup': subscribeData['occup'],
-        'ticket_id': subscribeData['ticket_id'],
-        'img': subscribeData['img'],
-        'pid': subscribeData['pid'],
-        'img64': subscribeData['img64'],
-        'pid64': subscribeData['pid64'],
-      },
-    );
-    print("personalId :" + subscribeData['pid64']);
-    return dio.post('/subscribe', data: formData);
-  } //end of Subscribe
-
-  //--------------------- Add Family --------------------------//
-
-  static Future<Response> AddFamily({familyData}) async {
-    FormData formData = FormData.fromMap(
-      {
-        'lang': lang,
-        'userid': uid,
-        'token': token,
-        'app_version': app_version,
-        'formid': GetStorage().read('formid'),
-        'type': familyData['type'],
-        'name': familyData['name'],
-        'dofb': familyData['dofb'],
-        'gender': familyData['gender'],
-        'phone': familyData['phone'],
-        'img': familyData['img'],
-        'pid': familyData['pid'],
-        'img64': familyData['img64'],
-        'pid64': familyData['pid64'],
-      },
-    );
-    return dio.post('/addFamily', data: formData);
-  } //end of Add Family
-
   //--------------------- Reset Password --------------------------//
 
   static Future<Response> ResetPassword({
@@ -256,12 +187,6 @@ class Api {
     return dio.post('/verification', data: formData);
   } //end of Redeem Account
 
-//--------------------- Get Users --------------------------//
-
-  static Future<Response> getUsers() async {
-    return dio.get('/allUsers');
-  } //end of getUsers
-
   //--------------------- Valid Token --------------------------//
 
   static Future<Response> ValidToken({
@@ -277,6 +202,111 @@ class Api {
     );
     return dio.post('/checkToken', data: formData);
   } //end of Valid Token
+
+  //--------------------- Delete Account --------------------------//
+
+  static Future<Response> DeleteAccount() async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/deleteAccount', data: formData);
+  } //end of Delete Account
+
+  //--------------------- Subscribe --------------------------//
+
+  static Future<Response> Subscribe({subscribeData}) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+        'name': subscribeData['name'],
+        'type': subscribeData['type'],
+        'address': subscribeData['address'],
+        'dofb': subscribeData['dofb'],
+        'gender': subscribeData['gender'],
+        'months': subscribeData['months'],
+        'membership_status': subscribeData['membership_status'],
+        'membership_id': subscribeData['membership_id'],
+        'email': subscribeData['email'],
+        'phone': subscribeData['phone'],
+        'occup': subscribeData['occup'],
+        'ticket_id': subscribeData['ticket_id'],
+        'img': subscribeData['img'],
+        'pid': subscribeData['pid'],
+        'img64': subscribeData['img64'],
+        'pid64': subscribeData['pid64'],
+      },
+    );
+    print("personalId :" + subscribeData['pid64']);
+    return dio.post('/subscribe', data: formData);
+  } //end of Subscribe
+
+  //--------------------- Edit Subscribe --------------------------//
+
+  static Future<Response> EditSubscribe({editSubscribeData}) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+        'name': editSubscribeData['name'],
+        'memberId': editSubscribeData['memberId'],
+        'type': editSubscribeData['type'],
+        'address': editSubscribeData['address'],
+        'dofb': editSubscribeData['dofb'],
+        'gender': editSubscribeData['gender'],
+        'months': editSubscribeData['months'],
+        'membership_status': editSubscribeData['membership_status'],
+        'membership_id': editSubscribeData['membership_id'],
+        'email': editSubscribeData['email'],
+        'phone': editSubscribeData['phone'],
+        'occup': editSubscribeData['occup'],
+        'img': editSubscribeData['img'],
+        'pid': editSubscribeData['pid'],
+        'img64': editSubscribeData['img64'],
+        'pid64': editSubscribeData['pid64'],
+      },
+    );
+    return dio.post('/editSubscribe', data: formData);
+  } //end of Edit Subscribe
+
+  //--------------------- Add Family --------------------------//
+
+  static Future<Response> AddFamily({familyData}) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+        'formid': GetStorage().read('formid'),
+        'type': familyData['type'],
+        'name': familyData['name'],
+        'dofb': familyData['dofb'],
+        'gender': familyData['gender'],
+        'phone': familyData['phone'],
+        'img': familyData['img'],
+        'pid': familyData['pid'],
+        'img64': familyData['img64'],
+        'pid64': familyData['pid64'],
+      },
+    );
+    return dio.post('/addFamily', data: formData);
+  } //end of Add Family
+
+//--------------------- Get Users --------------------------//
+
+  static Future<Response> getUsers() async {
+    return dio.get('/allUsers');
+  } //end of getUsers
 
   static Future<Response> Activate({
     required String? serial,
@@ -383,6 +413,45 @@ class Api {
     );
     return dio.post('/getMemberships', data: formData);
   } //end of Get Memberships
+
+  static Future<Response> Getfamily() async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/getFamily', data: formData);
+  } //end of Get Memberships
+
+  static Future<Response> GetMemberData({
+    required String? memberid,
+  }) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'memberid': memberid,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/getMemberData', data: formData);
+  } //end of Get Member Data
+
+  static Future<Response> GetMembershipsInfo() async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/getMembershipsInfo', data: formData);
+  } //end of Get Memberships Info
 
   //--------------------- Get History --------------------------//
 
@@ -495,6 +564,7 @@ class Api {
     );
     return dio.post('/transferFund', data: formData);
   } //end of Transfer Fund
+
   //--------------------- Blogs Operations --------------------------//
   //--------------------- Blogs --------------------------//
 

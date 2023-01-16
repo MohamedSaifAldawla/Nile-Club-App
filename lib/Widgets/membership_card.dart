@@ -204,6 +204,38 @@ Widget MembershipCard(context) {
                       ),
                     ),
                   const Gap(10),
+                  if (profileController.membershipType == "Family")
+                    InkWell(
+                      onTap: () {
+                        profileController.Getfamily();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        height: getProportionateScreenHeight(50),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: kPrimaryColor,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 15, left: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BodyText(
+                                text: "View Memberships".tr.toUpperCase(),
+                                weight: FontWeight.bold,
+                                color: kPrimaryColor,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  const Gap(10),
                   PrimaryButton(
                     text: "homepage".tr,
                     press: () {

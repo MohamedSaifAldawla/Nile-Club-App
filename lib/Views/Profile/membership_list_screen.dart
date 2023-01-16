@@ -29,21 +29,26 @@ class MembershipListScreen extends StatelessWidget {
                 1.2,
                 MemberCard(context: context),
               )
-            : ListView.separated(
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: profileController.memberships.length,
-                itemBuilder: (context, index) => FadeAnimation(
-                  1,
-                  MembershipCard(
-                      memberships: profileController.memberships[index],
-                      profileController: profileController,
-                      context: context),
-                ),
-                separatorBuilder: (context, index) => SizedBox(
-                  height: 25,
-                ),
-              ),
+            : formId != null && isMember == "0"
+                ? FadeAnimation(
+                    1.2,
+                    MembersReceipt(context: context),
+                  )
+                : ListView.separated(
+                    physics: BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: profileController.memberships.length,
+                    itemBuilder: (context, index) => FadeAnimation(
+                      1,
+                      MembershipCard(
+                          memberships: profileController.memberships[index],
+                          profileController: profileController,
+                          context: context),
+                    ),
+                    separatorBuilder: (context, index) => SizedBox(
+                      height: 25,
+                    ),
+                  ),
       ),
     );
   }
@@ -306,96 +311,154 @@ Widget MemberCard({required context}) {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Widget MembershipCard(
-//     {required Memberships memberships, profileController, context}) {
-//   return GestureDetector(
-//     onTap: () {
-//       memberships.id == "2"
-//           ? profileController.membershipType = "individual"
-//           : profileController.membershipType = "Family";
-//       profileController.getMemberships(catId: memberships.id);
-//       print(profileController.membershipType);
-//     },
-//     child: Container(
-//       width: double.infinity,
-//       decoration: BoxDecoration(
-//         color: Theme.of(context).brightness == Brightness.light
-//             ? kPrimaryLightColor
-//             : kPrimaryDark3Color,
-//         borderRadius: BorderRadius.circular(20),
-//         boxShadow: [
-//           BoxShadow(
-//             color: Theme.of(context).brightness == Brightness.light
-//                 ? shadow
-//                 : shadow2,
-//             blurRadius: 10,
-//             offset: Offset(0, 2),
-//           ),
-//         ],
-//       ),
-//       child: Padding(
-//         padding:
-//             const EdgeInsets.only(top: 30, bottom: 30, left: 20, right: 20),
-//         child: Row(
-//           children: [
-//             "${memberships.id}" == "2"
-//                 ? MemberIconIndividual(memberships, context)
-//                 : MemberIconFamily(memberships, context),
-//             const Gap(20),
-//             BodyText(
-//               text: "${memberships.name}".tr,
-//               weight: FontWeight.bold,
-//               color: Theme.of(context).brightness == Brightness.light
-//                   ? kSecondaryColor
-//                   : kPrimaryLightColor,
-//               fontSize: 18,
-//               maxLines: 2,
-//             ),
-//           ],
-//         ),
-//       ),
-//     ),
-//   );
-// }
-
-// SvgPicture MemberIconIndividual(Memberships memberships, context) {
-//   return SvgPicture.asset(
-//     "assets/icons/Groom.svg",
-//     color: kPrimaryColor,
-//     width: 40,
-//     height: 40,
-//   );
-// }
-
-// SvgPicture MemberIconFamily(Memberships memberships, context) {
-//   return SvgPicture.asset(
-//     "assets/icons/Family.svg",
-//     color: Color(0xffEA1E63),
-//     width: 40,
-//     height: 40,
-//   );
-// }
+Widget MembersReceipt({required context}) {
+  return Center(
+    child: Container(
+      width: double.infinity,
+      height: getProportionateScreenWidth(420),
+      decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.light
+              ? kPrimaryLightColor
+              : kPrimaryDark3Color,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).brightness == Brightness.light
+                  ? shadow
+                  : shadow2,
+              blurRadius: 10,
+              offset: Offset(0, 2),
+            ),
+          ]),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20),
+        child: Column(
+          children: [
+            const Gap(30),
+            SizedBox(
+              width: getProportionateScreenWidth(100),
+              height: getProportionateScreenHeight(100),
+              child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                backgroundImage: AssetImage("assets/images/logo3.png"),
+              ),
+            ),
+            const Gap(10),
+            BodyText(
+              text: "Your application is under processing".tr,
+              maxLines: 2,
+            ),
+            const Gap(30),
+            Row(
+              children: [
+                BodyText(
+                  text: "Status".tr,
+                  weight: FontWeight.w500,
+                ),
+                Spacer(),
+                BodyText(
+                  text: "${profileController.membershipReserve['status']}",
+                  weight: FontWeight.bold,
+                ),
+              ],
+            ),
+            const Gap(10),
+            Row(
+              children: [
+                BodyText(
+                  text: "Ticket name".tr,
+                  weight: FontWeight.w500,
+                ),
+                Spacer(),
+                BodyText(
+                  text:
+                      "${profileController.membershipReserve['MembershipType']}",
+                  weight: FontWeight.bold,
+                ),
+              ],
+            ),
+            const Gap(10),
+            Row(
+              children: [
+                BodyText(
+                  text: "No. of family".tr,
+                  weight: FontWeight.w500,
+                ),
+                Spacer(),
+                BodyText(
+                  text: "${profileController.membershipReserve['no_family']}" +
+                      " " +
+                      "family".tr,
+                  weight: FontWeight.bold,
+                ),
+              ],
+            ),
+            const Gap(10),
+            Row(
+              children: [
+                BodyText(
+                  text: "No. of Adults".tr,
+                  weight: FontWeight.w500,
+                ),
+                Spacer(),
+                BodyText(
+                  text: "${profileController.membershipReserve['noAdult']}" +
+                      " " +
+                      "Adult's".tr,
+                  weight: FontWeight.bold,
+                ),
+              ],
+            ),
+            const Gap(10),
+            Row(
+              children: [
+                BodyText(
+                  text: "No. of children's".tr,
+                  weight: FontWeight.w500,
+                ),
+                Spacer(),
+                BodyText(
+                  text: "${profileController.membershipReserve['noChild']}" +
+                      " " +
+                      "children's".tr,
+                  weight: FontWeight.bold,
+                ),
+              ],
+            ),
+            const Gap(30),
+            InkWell(
+              onTap: () {
+                profileController.Getfamily();
+              },
+              child: Container(
+                padding: EdgeInsets.all(5),
+                height: getProportionateScreenHeight(50),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: kPrimaryColor,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 15, left: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      BodyText(
+                        text: "View Memberships".tr.toUpperCase(),
+                        weight: FontWeight.bold,
+                        color: kPrimaryColor,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}

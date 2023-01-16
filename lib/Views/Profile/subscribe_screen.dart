@@ -441,6 +441,12 @@ class _SubscribeScreenState extends State<SubscribeScreen> {
                     ),
                   ),
                   const Gap(10),
+                  BodyText(
+                    text: "Upload Personal background".tr,
+                    color: kTextColor,
+                    maxLines: 2,
+                  ),
+                  const Gap(10),
                   Padding(
                     padding: const EdgeInsets.only(left: 5, right: 10),
                     child: personalImg == ''
@@ -495,7 +501,7 @@ class _SubscribeScreenState extends State<SubscribeScreen> {
                   const Gap(10),
                   Padding(
                     padding: const EdgeInsets.only(left: 5, right: 10),
-                    child: personalImg == ''
+                    child: personalId == ''
                         ? BodyText(
                             text: "Personal ID not selected".tr,
                             color: kTextColor,
