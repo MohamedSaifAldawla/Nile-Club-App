@@ -176,7 +176,6 @@ class ProfileController extends GetxController with BaseController {
       await GetStorage().write('formid', res['formid']);
       await init();
       Get.toNamed('membershipconfirm');
-      // await GetStorage().write('formid', res['formid']);
     }
   }
 

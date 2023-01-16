@@ -106,7 +106,11 @@ Widget TicketCard(Transaction transaction, context) {
                       BodyText(
                         text: "${transaction.output}",
                         weight: FontWeight.bold,
-                        color: transaction.output == "Pending" ? gold : success,
+                        color: transaction.output == "Pending"
+                            ? gold
+                            : transaction.output == "Declined"
+                                ? error
+                                : success,
                       ),
                     ],
                   ),

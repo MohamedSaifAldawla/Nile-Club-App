@@ -5,6 +5,8 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:nile_club/Globals/globals.dart';
 import 'package:nile_club/Models/Memberships.dart';
+import 'package:nile_club/Views/Profile/add_new_member_screen.dart';
+import 'package:nile_club/Views/Profile/subscribe_screen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../../Animations/FadeAnimation.dart';
 import '../../Widgets/intro.dart';
@@ -315,7 +317,7 @@ Widget MembersReceipt({required context}) {
   return Center(
     child: Container(
       width: double.infinity,
-      height: getProportionateScreenWidth(420),
+      height: getProportionateScreenWidth(480),
       decoration: BoxDecoration(
           color: Theme.of(context).brightness == Brightness.light
               ? kPrimaryLightColor
@@ -343,11 +345,6 @@ Widget MembersReceipt({required context}) {
                 backgroundImage: AssetImage("assets/images/logo3.png"),
               ),
             ),
-            const Gap(10),
-            BodyText(
-              text: "Your application is under processing".tr,
-              maxLines: 2,
-            ),
             const Gap(30),
             Row(
               children: [
@@ -359,6 +356,10 @@ Widget MembersReceipt({required context}) {
                 BodyText(
                   text: "${profileController.membershipReserve['status']}",
                   weight: FontWeight.bold,
+                  color: profileController.membershipReserve['status'] ==
+                          "Declined"
+                      ? error
+                      : gold,
                 ),
               ],
             ),
@@ -425,7 +426,64 @@ Widget MembersReceipt({required context}) {
                 ),
               ],
             ),
-            const Gap(30),
+            const Gap(10),
+            Row(
+              children: [
+                BodyText(
+                  text: "Amount".tr,
+                  weight: FontWeight.w500,
+                ),
+                Spacer(),
+                if (profileController.membershipReserve['amount'] != null)
+                  BodyText(
+                    text: "${profileController.membershipReserve['amount']} " +
+                        "${profileController.membershipReserve['currency']}".tr,
+                    weight: FontWeight.bold,
+                    color: success,
+                  ),
+                if (profileController.membershipReserve['amount'] == null)
+                  BodyText(
+                    text: "0",
+                    weight: FontWeight.bold,
+                    color: success,
+                  ),
+              ],
+            ),
+            const Gap(40),
+            if (profileController.membershipReserve['status'] != "Pending")
+              InkWell(
+                onTap: () {
+                  profileController.membershipType = "Family";
+                  profileController.Init();
+                  Get.to(() => AddNewMemberScreen());
+                },
+                child: Container(
+                  padding: EdgeInsets.all(5),
+                  height: getProportionateScreenHeight(50),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: kPrimaryColor,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 15, left: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        BodyText(
+                          text: "Add Member".tr.toUpperCase(),
+                          weight: FontWeight.bold,
+                          color: kPrimaryColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            const Gap(15),
             InkWell(
               onTap: () {
                 profileController.Getfamily();
