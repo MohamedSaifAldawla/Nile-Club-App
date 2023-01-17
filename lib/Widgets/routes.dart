@@ -3,7 +3,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:nile_club/Services/login_middlleware.dart';
 import 'package:nile_club/Services/middleware.dart';
 import 'package:nile_club/Views/Home/connection_screen.dart';
-import 'package:nile_club/Views/Home/family_membership_screen.dart';
+import 'package:nile_club/Views/Profile/family_membership_screen.dart';
 import 'package:nile_club/Views/Home/maintenance_screen.dart';
 import 'package:nile_club/Views/Home/trans_membership_screen.dart';
 import 'package:nile_club/Views/Profile/activate.dart';

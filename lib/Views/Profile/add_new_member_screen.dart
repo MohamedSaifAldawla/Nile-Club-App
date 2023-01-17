@@ -702,7 +702,8 @@ class _AddNewMemberScreenState extends State<AddNewMemberScreen> {
                               membershipStatus;
                           _subscribeData['membership_id'] =
                               profileController.membershipIdController.text;
-                          // _subscribeData['ticket_id'] = "${widget.services.id}";
+                          _subscribeData['ticket_id'] =
+                              "${profileController.membershipReserve["ticket_type_id"]}";
                           _subscribeData['img'] = personalImg;
                           _subscribeData['pid'] = personalId;
                           _subscribeData['img64'] = pImag64;
@@ -717,6 +718,7 @@ class _AddNewMemberScreenState extends State<AddNewMemberScreen> {
                                   personalId = '';
                                   GetStorage().read('formid');
                                   membershipStatus = 'none';
+                                  profileController.getMembershipsInfo();
                                 },
                               )
                             },

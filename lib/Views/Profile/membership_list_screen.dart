@@ -322,6 +322,11 @@ Widget MembersReceipt({required context}) {
               ? kPrimaryLightColor
               : kPrimaryDark3Color,
           borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+              image: Theme.of(context).brightness == Brightness.light
+                  ? AssetImage("assets/images/ticket2.png")
+                  : AssetImage("assets/images/ticket.png"),
+              fit: BoxFit.cover),
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).brightness == Brightness.light
@@ -332,7 +337,8 @@ Widget MembersReceipt({required context}) {
             ),
           ]),
       child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20),
+        padding:
+            const EdgeInsets.only(left: 25, right: 25, bottom: 30, top: 30),
         child: Column(
           children: [
             const Gap(30),
@@ -442,8 +448,9 @@ Widget MembersReceipt({required context}) {
                   ),
               ],
             ),
+            Spacer(),
             const Gap(40),
-            if (profileController.membershipReserve['status'] != "Pending")
+            if (profileController.membershipReserve['status'] == "Pending")
               InkWell(
                 onTap: () {
                   profileController.membershipType = "Family";
@@ -469,7 +476,6 @@ Widget MembersReceipt({required context}) {
                         BodyText(
                           text: "Add Member".tr.toUpperCase(),
                           weight: FontWeight.bold,
-                          color: kPrimaryColor,
                         ),
                       ],
                     ),
@@ -490,6 +496,7 @@ Widget MembersReceipt({required context}) {
                     color: kPrimaryColor,
                     width: 1.0,
                   ),
+                  gradient: kPrimaryGradientColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
@@ -500,7 +507,7 @@ Widget MembersReceipt({required context}) {
                       BodyText(
                         text: "View Memberships".tr.toUpperCase(),
                         weight: FontWeight.bold,
-                        color: kPrimaryColor,
+                        color: Colors.white,
                       ),
                     ],
                   ),
