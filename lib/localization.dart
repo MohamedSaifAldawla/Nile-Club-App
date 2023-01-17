@@ -21,9 +21,13 @@ class Localization implements Translations {
           "Enter your email": "Enter your email",
           "Enter your email": "Please enter your email",
           "Please Enter valid email": "Please enter valid email",
+          "Fullname": "Fullname",
+          "Enter your Fullname": "Enter your Fullname",
           "Firstname": "First name",
           "Client Name": "Client Name",
           "Client Phone": "Client Phone",
+          "Please Enter your Fullname": "Please Enter your Fullname",
+          "Please Enter occupation": "Please Enter occupation",
           "Enter your First name": "Enter your First name",
           "Please Enter your First name": "Please enter your First name",
           "Last name": "Last name",
@@ -34,6 +38,10 @@ class Localization implements Translations {
           "Male": "Male",
           "Female": "Female",
           "Address": "Address",
+          "Person type": "Person type",
+          "Merchant ID": "Merchant ID",
+          "Enter merchant id": "Enter merchant id",
+          "Please Enter merchant id": "Please Enter merchant id",
           "Adult": "Adult",
           "Child": "Child",
           "Occupation": "Occupation",
@@ -265,6 +273,7 @@ class Localization implements Translations {
           "No connection":
               "No internet, Please check your cellular data or wifi connection and restart the app",
           "Restart app": "Restart app",
+          "Redeem account": "Redeem account",
         },
         'ar': {
           //----------------------------------- Auth Pages -------------------------//
@@ -284,9 +293,13 @@ class Localization implements Translations {
           "Email": "البريد الإلكتروني",
           "Enter your email": "قم بإدخال البريد الإلكتروني",
           "Please Enter valid email": "الرجاء إدخال بريد إلكتروني صحيح",
+          "Fullname": "الإسم الكامل",
+          "Enter your Fullname": "ادخل إسمك بالكامل",
           "Firstname": "الإسم الأول",
           "Client Name": "إسم العميل",
           "Client Phone": "هاتف العميل",
+          "Please Enter your Fullname": "الرجاء إدخال إسمك بالكامل",
+          "Please Enter occupation": "الرجاء إدخال نوع العمل",
           "Enter your First name": "قم بإدخال إسمك الأول",
           "Please Enter your First name": "الرجاء قم بإدخال الإسم الأول",
           "Last name": "الإسم الأخير",
@@ -299,6 +312,10 @@ class Localization implements Translations {
           "Male": "ذكر",
           "Female": "أنثى",
           "Address": "العنوان",
+          "Person type": "النوع",
+          "Merchant ID": "رقم التاجر",
+          "Enter merchant id": "أدخل رقم التاجر",
+          "Please Enter merchant id": "الرجاء إدخال رقم التاجر",
           "Adult": "بالغ",
           "Child": "طفل",
           "Occupation": "العمل",
@@ -525,6 +542,7 @@ class Localization implements Translations {
           "No connection":
               "عذرا لايوجد هناك إتصال بالأنترنت ,قم بمراجعه الإتصال وإعاده تشغيل التطبيق",
           "Restart app": "إعاده تشغيل التطبيق",
+          "Redeem account": "إستعاده الحساب",
         }
       };
 }

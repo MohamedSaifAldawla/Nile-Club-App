@@ -56,6 +56,7 @@ class AuthController extends GetxController with BaseController {
       isLoggedIn.value = true;
       hideLoading();
       Get.offAllNamed("homepage");
+      profileController.getMembershipsInfo();
     }
   } //end of login
 

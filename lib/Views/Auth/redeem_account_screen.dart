@@ -48,7 +48,7 @@ class _RedeemAccountState extends State<RedeemAccountScreen> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Redeem".tr),
+        title: Text("Redeem account".tr),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

@@ -317,7 +317,6 @@ Widget MembersReceipt({required context}) {
   return Center(
     child: Container(
       width: double.infinity,
-      height: getProportionateScreenWidth(480),
       decoration: BoxDecoration(
           color: Theme.of(context).brightness == Brightness.light
               ? kPrimaryLightColor
@@ -387,9 +386,7 @@ Widget MembersReceipt({required context}) {
                 ),
                 Spacer(),
                 BodyText(
-                  text: "${profileController.membershipReserve['no_family']}" +
-                      " " +
-                      "family".tr,
+                  text: "${profileController.membershipReserve['no_family']}",
                   weight: FontWeight.bold,
                 ),
               ],
@@ -403,9 +400,7 @@ Widget MembersReceipt({required context}) {
                 ),
                 Spacer(),
                 BodyText(
-                  text: "${profileController.membershipReserve['noAdult']}" +
-                      " " +
-                      "Adult's".tr,
+                  text: "${profileController.membershipReserve['noAdult']}",
                   weight: FontWeight.bold,
                 ),
               ],
@@ -419,9 +414,7 @@ Widget MembersReceipt({required context}) {
                 ),
                 Spacer(),
                 BodyText(
-                  text: "${profileController.membershipReserve['noChild']}" +
-                      " " +
-                      "children's".tr,
+                  text: "${profileController.membershipReserve['noChild']}",
                   weight: FontWeight.bold,
                 ),
               ],
