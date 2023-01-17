@@ -716,6 +716,7 @@ class _SubscribeScreenState extends State<SubscribeScreen> {
                                   personalId = '';
                                   GetStorage().read('formid');
                                   membershipStatus = 'none';
+                                  profileController.getMembershipsInfo();
                                 },
                               )
                             },

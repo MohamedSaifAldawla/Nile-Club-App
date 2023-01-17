@@ -181,6 +181,7 @@ class ProfileController extends GetxController with BaseController {
 
   //--------------------- Get Memberships Info --------------------------//
   Future<void> getMembershipsInfo() async {
+    membershipReserve.clear();
     var response = await Api.GetMembershipsInfo();
     final res = json.decode(response.data);
     if (res['statuscode'] == 3) {

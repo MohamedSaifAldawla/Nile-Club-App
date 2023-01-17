@@ -23,35 +23,37 @@ class MembershipListScreen extends StatelessWidget {
         title: Text("Memberships Type".tr),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(horizontalPadding),
-            vertical: 20),
-        child: isMember == "1"
-            ? FadeAnimation(
-                1.2,
-                MemberCard(context: context),
-              )
-            : formId != null && isMember == "0"
-                ? FadeAnimation(
-                    1.2,
-                    MembersReceipt(context: context),
-                  )
-                : ListView.separated(
-                    physics: BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: profileController.memberships.length,
-                    itemBuilder: (context, index) => FadeAnimation(
-                      1,
-                      MembershipCard(
-                          memberships: profileController.memberships[index],
-                          profileController: profileController,
-                          context: context),
-                    ),
-                    separatorBuilder: (context, index) => SizedBox(
-                      height: 25,
-                    ),
-                  ),
-      ),
+          padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(horizontalPadding),
+              vertical: 20),
+          child: isMember == "1"
+              ? FadeAnimation(
+                  1.2,
+                  MemberCard(context: context),
+                )
+              : isMember == "0" && formId != "null"
+                  ? FadeAnimation(
+                      1.2,
+                      MembersReceipt(context: context),
+                    )
+                  : isMember == "0" && formId == "null"
+                      ? ListView.separated(
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: profileController.memberships.length,
+                          itemBuilder: (context, index) => FadeAnimation(
+                            1,
+                            MembershipCard(
+                                memberships:
+                                    profileController.memberships[index],
+                                profileController: profileController,
+                                context: context),
+                          ),
+                          separatorBuilder: (context, index) => SizedBox(
+                            height: 25,
+                          ),
+                        )
+                      : Container()),
     );
   }
 }
