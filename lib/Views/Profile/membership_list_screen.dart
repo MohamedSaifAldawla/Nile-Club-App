@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:nile_club/Globals/globals.dart';
 import 'package:nile_club/Models/Memberships.dart';
 import 'package:nile_club/Views/Profile/add_new_member_screen.dart';
-import 'package:nile_club/Views/Profile/subscribe_screen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../../Animations/FadeAnimation.dart';
 import '../../Widgets/intro.dart';
@@ -379,8 +378,7 @@ Widget MembersReceipt({required context}) {
                 ),
                 Spacer(),
                 BodyText(
-                  text:
-                      "${profileController.membershipReserve['MembershipType']}",
+                  text: "${profileController.membershipReserve['ticketName']}",
                   weight: FontWeight.bold,
                 ),
               ],
@@ -399,34 +397,36 @@ Widget MembersReceipt({required context}) {
                 ),
               ],
             ),
-            const Gap(10),
-            Row(
-              children: [
-                BodyText(
-                  text: "No. of Adults".tr,
-                  weight: FontWeight.w500,
-                ),
-                Spacer(),
-                BodyText(
-                  text: "${profileController.membershipReserve['noAdult']}",
-                  weight: FontWeight.bold,
-                ),
-              ],
-            ),
-            const Gap(10),
-            Row(
-              children: [
-                BodyText(
-                  text: "No. of children's".tr,
-                  weight: FontWeight.w500,
-                ),
-                Spacer(),
-                BodyText(
-                  text: "${profileController.membershipReserve['noChild']}",
-                  weight: FontWeight.bold,
-                ),
-              ],
-            ),
+            if (event_id == "4") const Gap(10),
+            if (event_id == "4")
+              Row(
+                children: [
+                  BodyText(
+                    text: "No. of Adults".tr,
+                    weight: FontWeight.w500,
+                  ),
+                  Spacer(),
+                  BodyText(
+                    text: "${profileController.membershipReserve['no_adult']}",
+                    weight: FontWeight.bold,
+                  ),
+                ],
+              ),
+            if (event_id == "4") const Gap(10),
+            if (event_id == "4")
+              Row(
+                children: [
+                  BodyText(
+                    text: "No. of children's".tr,
+                    weight: FontWeight.w500,
+                  ),
+                  Spacer(),
+                  BodyText(
+                    text: "${profileController.membershipReserve['no_child']}",
+                    weight: FontWeight.bold,
+                  ),
+                ],
+              ),
             const Gap(10),
             Row(
               children: [
@@ -452,7 +452,8 @@ Widget MembersReceipt({required context}) {
             ),
             Spacer(),
             const Gap(40),
-            if (profileController.membershipReserve['status'] == "Pending")
+            if (profileController.membershipReserve['status'] == "Pending" &&
+                event_id == "4")
               InkWell(
                 onTap: () {
                   profileController.membershipType = "Family";
@@ -485,37 +486,38 @@ Widget MembersReceipt({required context}) {
                 ),
               ),
             const Gap(15),
-            InkWell(
-              onTap: () {
-                profileController.Getfamily();
-              },
-              child: Container(
-                padding: EdgeInsets.all(5),
-                height: getProportionateScreenHeight(50),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: kPrimaryColor,
-                    width: 1.0,
+            if (event_id == "4")
+              InkWell(
+                onTap: () {
+                  profileController.Getfamily();
+                },
+                child: Container(
+                  padding: EdgeInsets.all(5),
+                  height: getProportionateScreenHeight(50),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: kPrimaryColor,
+                      width: 1.0,
+                    ),
+                    gradient: kPrimaryGradientColor,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  gradient: kPrimaryGradientColor,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 15, left: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      BodyText(
-                        text: "View Memberships".tr.toUpperCase(),
-                        weight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 15, left: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        BodyText(
+                          text: "View Memberships".tr.toUpperCase(),
+                          weight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),

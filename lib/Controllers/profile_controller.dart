@@ -29,6 +29,7 @@ class ProfileController extends GetxController with BaseController {
   var membershipReserve = {};
   final formKey = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
+  final TextEditingController title = TextEditingController();
   final TextEditingController fullnameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -128,6 +129,7 @@ class ProfileController extends GetxController with BaseController {
     var response = await Api.GetMemberships();
     hideLoading();
     final res = json.decode(response.data);
+    print(res);
     if (res['statuscode'] == 3) {
       SnackBar(
           "Error".tr,
@@ -151,31 +153,46 @@ class ProfileController extends GetxController with BaseController {
   //--------------------- Subscribe --------------------------//
   Future<void> Subscribe({required Map<String, dynamic> subscribeData}) async {
     print(subscribeData);
-    showLoading();
-    var response = await Api.Subscribe(subscribeData: subscribeData);
-    final res = json.decode(response.data);
-    //print(res);
-    if (res['statuscode'] == 3) {
+    try {
+      showLoading();
+      var response = await Api.Subscribe(subscribeData: subscribeData);
       hideLoading();
+      final res = json.decode(response.data);
+      //print(res);
+      if (res['statuscode'] == 3) {
+        hideLoading();
+        SnackBar(
+            "Error".tr,
+            res['message'],
+            SvgPicture.asset(
+              "assets/icons/Close.svg",
+              color: Colors.white,
+            ),
+            error,
+            SnackPosition.TOP);
+      }
+      if (res['statuscode'] == 0) {
+        hideLoading();
+        membershipReserve.clear();
+        membershipReserve = json.decode(response.data);
+        membershipReserve.addAll(membershipReserve);
+        print(membershipReserve);
+        await GetStorage().write('formid', res['formid']);
+        await GetStorage().write('event_id', res['event_id']);
+        await init();
+        Get.toNamed('membershipconfirm');
+      }
+    } catch (e) {
+      print(e);
       SnackBar(
           "Error".tr,
-          res['message'],
+          e.toString(),
           SvgPicture.asset(
             "assets/icons/Close.svg",
             color: Colors.white,
           ),
           error,
           SnackPosition.TOP);
-    }
-    if (res['statuscode'] == 0) {
-      hideLoading();
-      membershipReserve.clear();
-      membershipReserve = json.decode(response.data);
-      membershipReserve.addAll(membershipReserve);
-      print(membershipReserve);
-      await GetStorage().write('formid', res['formid']);
-      await init();
-      Get.toNamed('membershipconfirm');
     }
   }
 
@@ -258,6 +275,7 @@ class ProfileController extends GetxController with BaseController {
           SnackPosition.TOP);
     } else if (res['statuscode'] == 0) {
       print(res);
+      title.text = res['message']['name'];
       fullnameController.text = res['message']['name'];
       addressController.text = res['message']['address'];
       emailController.text = res['message']['email'];
@@ -293,7 +311,7 @@ class ProfileController extends GetxController with BaseController {
     final res = json.decode(response.data);
     print(res);
     if (res['statuscode'] == 3) {
-      SnackBar(
+      local_auth.SnackBar(
           "Error".tr,
           res['message'],
           SvgPicture.asset(
@@ -301,13 +319,11 @@ class ProfileController extends GetxController with BaseController {
             color: Colors.white,
           ),
           error,
-          SnackPosition.TOP);
+          SnackPosition.TOP,
+          2);
     }
     if (res['statuscode'] == 0) {
-      await Getfamily2();
-      Get.back();
-      hideLoading();
-      SnackBar(
+      local_auth.SnackBar(
           "Success".tr,
           res['message'],
           SvgPicture.asset(
@@ -315,9 +331,9 @@ class ProfileController extends GetxController with BaseController {
             color: Colors.white,
           ),
           success,
-          SnackPosition.TOP);
-
-      //Get.toNamed('membershipconfirm');
+          SnackPosition.TOP,
+          2);
+      await Getfamily2();
     }
   }
 

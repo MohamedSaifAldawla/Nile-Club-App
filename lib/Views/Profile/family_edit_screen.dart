@@ -67,7 +67,7 @@ class _FamilyEditScreenState extends State<FamilyEditScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(profileController.fullnameController.text.toUpperCase()),
+        title: Text(profileController.title.text.toUpperCase()),
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),

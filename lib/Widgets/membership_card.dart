@@ -36,7 +36,7 @@ Widget MembershipCard(context) {
                   ),
                 ]),
             child: Padding(
-              padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20),
+              padding: const EdgeInsets.only(left: 25, right: 25, bottom: 30),
               child: Column(
                 children: [
                   const Gap(30),
@@ -53,7 +53,7 @@ Widget MembershipCard(context) {
                     text: "Your application is under processing".tr,
                     maxLines: 2,
                   ),
-                  const Gap(30),
+                  const Gap(40),
                   Row(
                     children: [
                       BodyText(
@@ -65,6 +65,10 @@ Widget MembershipCard(context) {
                         text:
                             "${profileController.membershipReserve['status']}",
                         weight: FontWeight.bold,
+                        color: profileController.membershipReserve['status'] ==
+                                "Declined"
+                            ? error
+                            : gold,
                       ),
                     ],
                   ),
@@ -136,7 +140,7 @@ Widget MembershipCard(context) {
                         ),
                       ],
                     ),
-                  const Gap(10),
+                  const Gap(40),
                   if (profileController.membershipType == "Family" &&
                       profileController.membershipReserve['no_adult'] < 2)
                     InkWell(
@@ -240,6 +244,7 @@ Widget MembershipCard(context) {
                     text: "homepage".tr,
                     press: () {
                       Get.offAllNamed('homepage');
+                      profileController.getMembershipsInfo();
                     },
                   ),
                 ],

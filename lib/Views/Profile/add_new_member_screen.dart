@@ -718,7 +718,6 @@ class _AddNewMemberScreenState extends State<AddNewMemberScreen> {
                                   personalId = '';
                                   GetStorage().read('formid');
                                   membershipStatus = 'none';
-                                  profileController.getMembershipsInfo();
                                 },
                               )
                             },

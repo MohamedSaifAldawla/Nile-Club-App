@@ -10,12 +10,15 @@ class MembershipConfirmScreen extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text("Membership Confirmation".tr),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        // appBar: AppBar(
+        //   backgroundColor: Colors.transparent,
+        //   title: Text("Membership Confirmation".tr),
+        // ),
+        body: MembershipCard(context),
       ),
-      body: MembershipCard(context),
     );
   }
 }
