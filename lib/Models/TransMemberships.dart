@@ -19,20 +19,26 @@ class TransMembershipList {
 
 class TransMemberships {
   TransMemberships({
+    this.id,
     this.name,
     this.phone,
     this.serial,
+    this.img,
   });
 
+  String? id;
   String? name;
   String? phone;
   String? serial;
+  String? img;
 
   factory TransMemberships.fromJson(Map<String, dynamic> json) =>
       TransMemberships(
+        id: json["id"],
         name: json["name"],
         phone: json["phone"],
         serial: json["serial"],
+        img: json["img"],
       );
 }
 

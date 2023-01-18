@@ -105,7 +105,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       const Gap(10),
                       FadeAnimation(
                         1.5,
-                        BodyText(text: "Login with your Username".tr),
+                        BodyText(
+                          text: "Login with your Username".tr,
+                          maxLines: 2,
+                        ),
                       ),
                       const Gap(40),
                       FadeAnimation(
@@ -241,7 +244,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 text: "Forgot Password".tr,
                                 color: kPrimaryColor,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -287,6 +290,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           press: () {
                             Get.toNamed("register");
                           },
+                        ),
+                      ),
+                      const Gap(20),
+                      FadeAnimation(
+                        2.2,
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("redeem");
+                          },
+                          child: BodyText(
+                            text: "Redeem account".tr,
+                            color: kPrimaryColor,
+                          ),
                         ),
                       ),
                       // const Gap(20),

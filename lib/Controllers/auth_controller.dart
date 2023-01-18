@@ -20,10 +20,11 @@ class AuthController extends GetxController with BaseController {
   final user = User().obs;
   var isLoggedIn = false.obs;
   var passLength = 8;
+  var otpPhone = "";
 
   @override
   void onInit() async {
-    CheckToken2();
+    //CheckToken2();
     //getUsers();
     super.onInit();
   }
@@ -55,6 +56,7 @@ class AuthController extends GetxController with BaseController {
       isLoggedIn.value = true;
       hideLoading();
       Get.offAllNamed("homepage");
+      profileController.getMembershipsInfo();
     }
   } //end of login
 
@@ -128,6 +130,7 @@ class AuthController extends GetxController with BaseController {
           ),
           success,
           SnackPosition.TOP);
+      Get.back();
     }
 
     hideLoading();
@@ -174,12 +177,83 @@ class AuthController extends GetxController with BaseController {
     //print(checkOut);
   } //end of Reset Password
 
+  //--------------------- Redeem Account --------------------------//
+
+  Future<void> RedeemAccount({required Map<String, dynamic> resetData}) async {
+    print(resetData);
+    otpPhone = resetData['phone'];
+    showLoading();
+    var response = await Api.RedeemAccount(
+      phone: resetData['phone'],
+    );
+    hideLoading();
+    final res = json.decode(response.data);
+    print(res);
+    if (res['statuscode'] == 3) {
+      SnackBar(
+          "Error".tr,
+          res['msg'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+    } else if (res['statuscode'] == 0) {
+      Get.toNamed("otp");
+      SnackBar(
+          "Success".tr,
+          res['msg'],
+          SvgPicture.asset(
+            "assets/icons/Success2.svg",
+            color: Colors.white,
+          ),
+          success,
+          SnackPosition.TOP);
+    }
+  } //end of Redeem Account
+  //--------------------- Verification --------------------------//
+
+  Future<void> Verification({required String otpCode}) async {
+    print(otpCode);
+    showLoading();
+    var response = await Api.Verification(
+      otp: otpCode,
+      phone: otpPhone,
+    );
+    hideLoading();
+    final res = json.decode(response.data);
+    print(res);
+    if (res['statuscode'] == 3) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+    } else if (res['statuscode'] == 0) {
+      Get.toNamed("login");
+      SnackBar(
+          "Success".tr,
+          res['msg'],
+          SvgPicture.asset(
+            "assets/icons/Success2.svg",
+            color: Colors.white,
+          ),
+          success,
+          SnackPosition.TOP);
+    }
+  } //end of Verification
+
 //--------------------- Check Token --------------------------//
 
   Future<void> CheckToken2() async {
-    if (GetStorage().read('login_token') == null) {
+    if (await GetStorage().read('login_token') == null) {
       print("No Token");
-    } else if (GetStorage().read('login_token') != null) {
+    } else if (await GetStorage().read('login_token') != null) {
       var response = await Api.ValidToken(uid: GetStorage().read("id"));
       print("Token : $response");
       final res = json.decode(response.data);

@@ -290,7 +290,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 FadeAnimation(
                   1.8,
                   PrimaryButton(
-                    text: "Register".tr,
+                    text: "Register2".tr,
                     press: () {
                       if (_formKey.currentState!.validate()) {
                         _registerData['firstname'] = _firstnameController.text;

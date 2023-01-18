@@ -3,9 +3,11 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:nile_club/Services/login_middlleware.dart';
 import 'package:nile_club/Services/middleware.dart';
 import 'package:nile_club/Views/Home/connection_screen.dart';
+import 'package:nile_club/Views/Profile/family_membership_screen.dart';
 import 'package:nile_club/Views/Home/maintenance_screen.dart';
 import 'package:nile_club/Views/Home/trans_membership_screen.dart';
 import 'package:nile_club/Views/Profile/activate.dart';
+import 'package:nile_club/Views/Profile/family_edit_screen.dart';
 import 'package:nile_club/Views/Profile/money_transfer.dart';
 import 'package:nile_club/Views/Profile/transfer_ticket_screen.dart';
 import 'package:nile_club/Views/Services/offers_screen.dart';
@@ -17,6 +19,8 @@ import 'package:nile_club/Views/Profile/family_screen.dart';
 import 'package:nile_club/Views/Profile/membership_list_screen.dart';
 import '../Views/Auth/intro_screen.dart';
 import '../Views/Auth/login_screen.dart';
+import '../Views/Auth/otp_screen.dart';
+import '../Views/Auth/redeem_account_screen.dart';
 import '../Views/Auth/register_screen.dart';
 import '../Views/Auth/resetpass_screen.dart';
 import '../Views/Auth/splash_screen.dart.dart';
@@ -48,6 +52,8 @@ List<GetPage<dynamic>> routes = [
   ),
   GetPage(name: "/register", page: () => const RegisterScreen()),
   GetPage(name: "/reset", page: () => const ResetPasswordScreen()),
+  GetPage(name: "/redeem", page: () => const RedeemAccountScreen()),
+  GetPage(name: "/otp", page: () => OTPScreen()),
   GetPage(name: "/auth", page: () => const FingerAuthScreen()),
   GetPage(name: "/homepage", page: () => HomePage()),
   GetPage(name: "/home", page: () => HomeScreen()),
@@ -71,6 +77,8 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: "/membershiplist", page: () => MembershipListScreen()),
   GetPage(name: "/membership", page: () => MembershipScreen()),
   GetPage(name: "/transmembership", page: () => TransMembershipScreen()),
+  GetPage(name: "/familymembership", page: () => FamilyMembershipScreen()),
+  GetPage(name: "/familyedit", page: () => FamilyEditScreen()),
   GetPage(name: "/membershipconfirm", page: () => MembershipConfirmScreen()),
   GetPage(name: "/family", page: () => FamilyScreen()),
   GetPage(name: "/contact", page: () => const ContactScreen()),

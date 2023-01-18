@@ -82,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   vertical: getProportionateScreenHeight(25)),
                               physics: BouncingScrollPhysics(),
-                              itemCount: 3,
+                              itemCount: servicesController.offers.length,
                               itemBuilder: (context, index) => GestureDetector(
                                 onTap: () => Get.to(
                                   () => ServiceDetails(
@@ -135,7 +135,6 @@ class HomeScreen extends StatelessWidget {
                           service: "Services".tr,
                           onTap: () {
                             servicesController.getServices();
-                            //Get.toNamed("services");
                           },
                         ),
                         ServicesItem(
@@ -145,7 +144,6 @@ class HomeScreen extends StatelessWidget {
                           service: "Cinema".tr,
                           onTap: () {
                             servicesController.getCinema();
-                            // Get.toNamed("cinema");
                           },
                         ),
                         ServicesItem(
@@ -155,7 +153,6 @@ class HomeScreen extends StatelessWidget {
                           service: "Offers".tr,
                           onTap: () {
                             servicesController.getOffers();
-                            // Get.toNamed("offers");
                           },
                         ),
                         ServicesItem(
@@ -212,7 +209,7 @@ class HomeScreen extends StatelessWidget {
                                     vertical: getProportionateScreenWidth(25),
                                   ),
                                   physics: BouncingScrollPhysics(),
-                                  itemCount: 3,
+                                  itemCount: blogsController.blogs.length,
                                   itemBuilder: (context, index) =>
                                       GestureDetector(
                                     onTap: () {

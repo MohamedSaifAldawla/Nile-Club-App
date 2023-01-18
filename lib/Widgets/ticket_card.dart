@@ -106,7 +106,11 @@ Widget TicketCard(Transaction transaction, context) {
                       BodyText(
                         text: "${transaction.output}",
                         weight: FontWeight.bold,
-                        color: transaction.output == "Pending" ? gold : success,
+                        color: transaction.output == "Pending"
+                            ? gold
+                            : transaction.output == "Declined"
+                                ? error
+                                : success,
                       ),
                     ],
                   ),
@@ -119,8 +123,7 @@ Widget TicketCard(Transaction transaction, context) {
                       ),
                       Spacer(),
                       BodyText(
-                        text: "${transaction.outputAmount}"
-                            " SDG",
+                        text: "${transaction.outputAmount}" + "SDG".tr,
                         weight: FontWeight.bold,
                         color: success,
                       ),
@@ -243,7 +246,7 @@ Widget TicketCard(Transaction transaction, context) {
                         ),
                         Spacer(),
                         BodyText(
-                          text: "${transaction.outputQty}" + "person".tr,
+                          text: "${transaction.outputQty}",
                           weight: FontWeight.bold,
                         ),
                       ],
@@ -263,8 +266,7 @@ Widget TicketCard(Transaction transaction, context) {
                         ),
                         Spacer(),
                         BodyText(
-                          text: "${transaction.outputBalance} "
-                              "SDG",
+                          text: "${transaction.outputBalance} " + "SDG".tr,
                           weight: FontWeight.bold,
                           fontSize: getProportionateScreenWidth(18),
                           color: success,
@@ -281,7 +283,7 @@ Widget TicketCard(Transaction transaction, context) {
                         ),
                         Spacer(),
                         BodyText(
-                          text: "${transaction.outputExtraFees} " "SDG".tr,
+                          text: "${transaction.outputExtraFees} " + "SDG".tr,
                           weight: FontWeight.bold,
                         ),
                       ],

@@ -140,6 +140,69 @@ class Api {
     return dio.post('/updateProfile', data: formData);
   } //end of Account Update
 
+  //--------------------- Reset Password --------------------------//
+
+  static Future<Response> ResetPassword({
+    required String phone,
+  }) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'phone': phone,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/resetPassword', data: formData);
+  } //end of Reset Password
+
+  //--------------------- Redeem Account --------------------------//
+
+  static Future<Response> RedeemAccount({
+    required String phone,
+  }) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'phone': phone,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/reActivate', data: formData);
+  } //end of Redeem Account
+
+  //---------------------Verification--------------------------//
+
+  static Future<Response> Verification({
+    required String phone,
+    required String otp,
+  }) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'phone': phone,
+        'otp': otp,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/verification', data: formData);
+  } //end of Redeem Account
+
+  //--------------------- Valid Token --------------------------//
+
+  static Future<Response> ValidToken({
+    required String uid,
+  }) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/checkToken', data: formData);
+  } //end of Valid Token
+
   //--------------------- Delete Account --------------------------//
 
   static Future<Response> DeleteAccount() async {
@@ -185,6 +248,36 @@ class Api {
     return dio.post('/subscribe', data: formData);
   } //end of Subscribe
 
+  //--------------------- Edit Subscribe --------------------------//
+
+  static Future<Response> EditSubscribe({editSubscribeData}) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+        'name': editSubscribeData['name'],
+        'memberId': editSubscribeData['memberId'],
+        'type': editSubscribeData['type'],
+        'address': editSubscribeData['address'],
+        'dofb': editSubscribeData['dofb'],
+        'gender': editSubscribeData['gender'],
+        'months': editSubscribeData['months'],
+        'membership_status': editSubscribeData['membership_status'],
+        'membership_id': editSubscribeData['membership_id'],
+        'email': editSubscribeData['email'],
+        'phone': editSubscribeData['phone'],
+        'occup': editSubscribeData['occup'],
+        'img': editSubscribeData['img'],
+        'pid': editSubscribeData['pid'],
+        'img64': editSubscribeData['img64'],
+        'pid64': editSubscribeData['pid64'],
+      },
+    );
+    return dio.post('/editSubscribe', data: formData);
+  } //end of Edit Subscribe
+
   //--------------------- Add Family --------------------------//
 
   static Future<Response> AddFamily({familyData}) async {
@@ -209,42 +302,11 @@ class Api {
     return dio.post('/addFamily', data: formData);
   } //end of Add Family
 
-  //--------------------- Reset Password --------------------------//
-
-  static Future<Response> ResetPassword({
-    required String phone,
-  }) async {
-    FormData formData = FormData.fromMap(
-      {
-        'lang': lang,
-        'phone': phone,
-        'app_version': app_version,
-      },
-    );
-    return dio.post('/resetPassword', data: formData);
-  } //end of Reset Password
-
 //--------------------- Get Users --------------------------//
 
   static Future<Response> getUsers() async {
     return dio.get('/allUsers');
   } //end of getUsers
-
-  //--------------------- Valid Token --------------------------//
-
-  static Future<Response> ValidToken({
-    required String uid,
-  }) async {
-    FormData formData = FormData.fromMap(
-      {
-        'lang': lang,
-        'userid': uid,
-        'token': token,
-        'app_version': app_version,
-      },
-    );
-    return dio.post('/checkToken', data: formData);
-  } //end of Valid Token
 
   static Future<Response> Activate({
     required String? serial,
@@ -351,6 +413,45 @@ class Api {
     );
     return dio.post('/getMemberships', data: formData);
   } //end of Get Memberships
+
+  static Future<Response> Getfamily() async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/getFamily', data: formData);
+  } //end of Get Memberships
+
+  static Future<Response> GetMemberData({
+    required String? memberid,
+  }) async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'memberid': memberid,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/getMemberData', data: formData);
+  } //end of Get Member Data
+
+  static Future<Response> GetMembershipsInfo() async {
+    FormData formData = FormData.fromMap(
+      {
+        'lang': lang,
+        'userid': uid,
+        'token': token,
+        'app_version': app_version,
+      },
+    );
+    return dio.post('/getMembershipsInfo', data: formData);
+  } //end of Get Memberships Info
 
   //--------------------- Get History --------------------------//
 
@@ -463,6 +564,7 @@ class Api {
     );
     return dio.post('/transferFund', data: formData);
   } //end of Transfer Fund
+
   //--------------------- Blogs Operations --------------------------//
   //--------------------- Blogs --------------------------//
 

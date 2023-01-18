@@ -125,7 +125,7 @@ class _TransferQRState extends State<TransferQR> {
                           },
                           icon: SvgPicture.asset(
                             "assets/icons/Cancel.svg",
-                            color: kTextColor,
+                            color: error,
                             width: 20,
                             height: 20,
                           ),
@@ -141,7 +141,7 @@ class _TransferQRState extends State<TransferQR> {
                         children: [
                           FadeAnimation2(
                             1.1,
-                            ScreenTitle(text: "Set Amount".tr),
+                            ScreenTitle(text: "Enter your Amount".tr),
                           ),
                           const Gap(25),
                           FadeAnimation2(
@@ -172,7 +172,7 @@ class _TransferQRState extends State<TransferQR> {
                             1.4,
                             InputField(
                               controller: _amount,
-                              label: "Add Amount".tr,
+                              label: "Enter your Amount".tr,
                               hint: "Ex:".tr,
                               type: "Amount",
                               icon: "assets/icons/Money.svg",

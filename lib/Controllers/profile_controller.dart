@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:intl/intl.dart';
 import 'package:nile_club/Controllers/trans_controller.dart';
 import 'package:nile_club/Globals/globals.dart';
 import 'package:nile_club/Models/Memberships.dart';
@@ -28,11 +29,23 @@ class ProfileController extends GetxController with BaseController {
   var membershipReserve = {};
   final formKey = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
+  final TextEditingController title = TextEditingController();
   final TextEditingController fullnameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   final TextEditingController occupController = TextEditingController();
+  String memberImg = '';
+  String memberPidImg = '';
+  String memberId = '';
+  String userId = '';
+  String parent = '';
+  String gender = '';
+  String personType = '';
+  String membershipStatus = "0";
+  String months = '';
+
+  DateTime selectedDate = DateTime.now();
   final TextEditingController membershipIdController = TextEditingController();
 
   bool darkMode = false;
@@ -41,6 +54,8 @@ class ProfileController extends GetxController with BaseController {
   @override
   void onInit() async {
     getMembershipsList();
+    getMembershipsInfo();
+
     bool? isDark = await GetStorage().read("isDark");
     bool? fAuth = await GetStorage().read("fingerAuth");
     if (isDark == true) {
@@ -114,6 +129,7 @@ class ProfileController extends GetxController with BaseController {
     var response = await Api.GetMemberships();
     hideLoading();
     final res = json.decode(response.data);
+    print(res);
     if (res['statuscode'] == 3) {
       SnackBar(
           "Error".tr,
@@ -137,12 +153,70 @@ class ProfileController extends GetxController with BaseController {
   //--------------------- Subscribe --------------------------//
   Future<void> Subscribe({required Map<String, dynamic> subscribeData}) async {
     print(subscribeData);
-    showLoading();
-    var response = await Api.Subscribe(subscribeData: subscribeData);
-    final res = json.decode(response.data);
-    //print(res);
-    if (res['statuscode'] == 3) {
+    try {
+      showLoading();
+      var response = await Api.Subscribe(subscribeData: subscribeData);
       hideLoading();
+      final res = json.decode(response.data);
+      //print(res);
+      if (res['statuscode'] == 3) {
+        hideLoading();
+        SnackBar(
+            "Error".tr,
+            res['message'],
+            SvgPicture.asset(
+              "assets/icons/Close.svg",
+              color: Colors.white,
+            ),
+            error,
+            SnackPosition.TOP);
+      }
+      if (res['statuscode'] == 0) {
+        hideLoading();
+        membershipReserve.clear();
+        membershipReserve = json.decode(response.data);
+        membershipReserve.addAll(membershipReserve);
+        print(membershipReserve);
+        await GetStorage().write('formid', res['formid']);
+        await GetStorage().write('event_id', res['event_id']);
+        await init();
+        Get.toNamed('membershipconfirm');
+      }
+    } catch (e) {
+      print(e);
+      SnackBar(
+          "Error".tr,
+          e.toString(),
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+    }
+  }
+
+  //--------------------- Get Memberships Info --------------------------//
+  Future<void> getMembershipsInfo() async {
+    membershipReserve.clear();
+    var response = await Api.GetMembershipsInfo();
+    final res = json.decode(response.data);
+    if (res['statuscode'] == 3) {
+      print("Memberships Info : $res['message']");
+    }
+    if (res['statuscode'] == 0) {
+      membershipReserve.clear();
+      membershipReserve.addAll(res['message']);
+      print("Memberships Info : $membershipReserve");
+    }
+  }
+
+  Future<void> Getfamily() async {
+    showLoading();
+    var response = await Api.Getfamily();
+    hideLoading();
+    final res = json.decode(response.data);
+    if (res['statuscode'] == 3) {
       SnackBar(
           "Error".tr,
           res['message'],
@@ -152,17 +226,114 @@ class ProfileController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    } else if (res['statuscode'] == 0) {
+      TransMembershipList transMembershipsreponse =
+          TransMembershipList.fromJson(res);
+      transMemberships.clear();
+      transMemberships.addAll(transMembershipsreponse.memberships);
+      print(transMemberships);
+      Get.toNamed('familymembership');
+    }
+  }
+
+  Future<void> Getfamily2() async {
+    var response = await Api.Getfamily();
+    final res = json.decode(response.data);
+    if (res['statuscode'] == 3) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+    } else if (res['statuscode'] == 0) {
+      TransMembershipList transMembershipsreponse =
+          TransMembershipList.fromJson(res);
+      transMemberships.clear();
+      transMemberships.addAll(transMembershipsreponse.memberships);
+      print(transMemberships);
+    }
+  }
+
+  Future<void> GetMemberData({required String memberid}) async {
+    showLoading();
+    var response = await Api.GetMemberData(memberid: memberid);
+    hideLoading();
+    final res = json.decode(response.data);
+    if (res['statuscode'] == 3) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+    } else if (res['statuscode'] == 0) {
+      print(res);
+      title.text = res['message']['name'];
+      fullnameController.text = res['message']['name'];
+      addressController.text = res['message']['address'];
+      emailController.text = res['message']['email'];
+      phoneController.text = res['message']['phone'];
+      occupController.text = res['message']['occup'] ?? "";
+      personType = res['message']['type'];
+      gender = res['message']['gender'];
+      membershipStatus = res['message']['old'];
+      selectedDate = DateFormat("yyyy-MM-dd").parse(res['message']['dofb']);
+      memberImg = res['message']['img'];
+      memberPidImg = res['message']['pid'];
+      memberId = res['message']['id'];
+      userId = res['message']['userid'];
+      parent = res['message']['parent'];
+      months = res['message']['months'] ?? '';
+      Get.toNamed('familyedit');
+    }
+  }
+
+  //--------------------- Edit Subscribe --------------------------//
+  Future<void> EditSubscribe(
+      {required Map<String, dynamic> editSubscribeData}) async {
+    if (editSubscribeData['membership_status'] == "0") {
+      editSubscribeData['membership_status'] = "New";
+    } else if (editSubscribeData['membership_status'] == "1") {
+      editSubscribeData['membership_status'] = "Exist";
+    }
+    print(editSubscribeData);
+    showLoading();
+    var response =
+        await Api.EditSubscribe(editSubscribeData: editSubscribeData);
+    hideLoading();
+    final res = json.decode(response.data);
+    print(res);
+    if (res['statuscode'] == 3) {
+      local_auth.SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP,
+          2);
     }
     if (res['statuscode'] == 0) {
-      hideLoading();
-      membershipReserve.clear();
-      membershipReserve = json.decode(response.data);
-      membershipReserve.addAll(membershipReserve);
-      print(membershipReserve);
-      await GetStorage().write('formid', res['formid']);
-      await init();
-      Get.toNamed('membershipconfirm');
-      // await GetStorage().write('formid', res['formid']);
+      local_auth.SnackBar(
+          "Success".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Success2.svg",
+            color: Colors.white,
+          ),
+          success,
+          SnackPosition.TOP,
+          2);
+      await Getfamily2();
     }
   }
 
@@ -209,7 +380,7 @@ class ProfileController extends GetxController with BaseController {
     hideLoading();
     print("Activate : $res");
     if (res['statuscode'] == 0) {
-      hideLoading();
+      Get.back();
       SnackBar(
           "Success".tr,
           res['message'],
@@ -219,10 +390,9 @@ class ProfileController extends GetxController with BaseController {
           ),
           success,
           SnackPosition.TOP);
-      //authController.logout();
     }
     if (res['statuscode'] == 3) {
-      hideLoading();
+      Get.back();
       SnackBar(
           "Error".tr,
           res['message'],

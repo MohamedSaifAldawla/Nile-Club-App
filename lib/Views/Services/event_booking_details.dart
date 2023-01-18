@@ -77,7 +77,7 @@ class EventBookingDetails extends StatelessWidget {
                         ),
                         Spacer(),
                         BodyText(
-                          text: "${event.totalPrice} " "SDG",
+                          text: "${event.totalPrice} " "SDG".tr,
                           weight: FontWeight.bold,
                           fontSize: getProportionateScreenWidth(18),
                           color: success,

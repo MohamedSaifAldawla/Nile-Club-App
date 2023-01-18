@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -6,6 +7,7 @@ import 'package:nile_club/Models/TransMemberships.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../../Animations/FadeAnimation.dart';
 import '../../Widgets/intro.dart';
+import '../../Widgets/loader.dart';
 import '../../Widgets/secondery_button.dart';
 import '../../size_config.dart';
 import '../../theme.dart';
@@ -78,15 +80,24 @@ Widget MembershipItem(
           children: [
             Row(
               children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: CircleAvatar(
-                    backgroundColor:
-                        Theme.of(context).brightness == Brightness.light
-                            ? kPrimaryLightColor
-                            : kPrimaryDark3Color,
-                    backgroundImage: AssetImage("assets/images/User.png"),
+                CachedNetworkImage(
+                  imageUrl: "${membership.img}",
+                  placeholder: (context, url) => Loader(),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.error,
+                    size: 60,
+                  ),
+                  imageBuilder: (context, imageProvider) => Container(
+                    width: getProportionateScreenWidth(80.0),
+                    height: getProportionateScreenWidth(80.0),
+                    decoration: BoxDecoration(
+                      color: kTextColor,
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
                 const Gap(10),

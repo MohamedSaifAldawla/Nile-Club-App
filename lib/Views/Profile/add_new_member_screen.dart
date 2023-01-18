@@ -18,15 +18,16 @@ import '../../Widgets/primary_button.dart';
 import '../../size_config.dart';
 import '../../theme.dart';
 
-class SubscribeScreen extends StatefulWidget {
-  SubscribeScreen({Key? key, required this.services}) : super(key: key);
-  final Services services;
+class AddNewMemberScreen extends StatefulWidget {
+  AddNewMemberScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<SubscribeScreen> createState() => _SubscribeScreenState();
+  State<AddNewMemberScreen> createState() => _AddNewMemberScreenState();
 }
 
-class _SubscribeScreenState extends State<SubscribeScreen> {
+class _AddNewMemberScreenState extends State<AddNewMemberScreen> {
   ProfileController profileController = Get.find<ProfileController>();
 
   final Map<String, dynamic> _subscribeData = {};
@@ -70,7 +71,7 @@ class _SubscribeScreenState extends State<SubscribeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${widget.services.ticketType}".tr),
+        title: Text("Add Member".tr),
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -701,7 +702,8 @@ class _SubscribeScreenState extends State<SubscribeScreen> {
                               membershipStatus;
                           _subscribeData['membership_id'] =
                               profileController.membershipIdController.text;
-                          _subscribeData['ticket_id'] = "${widget.services.id}";
+                          _subscribeData['ticket_id'] =
+                              "${profileController.membershipReserve["ticket_type_id"]}";
                           _subscribeData['img'] = personalImg;
                           _subscribeData['pid'] = personalId;
                           _subscribeData['img64'] = pImag64;

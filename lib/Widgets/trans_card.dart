@@ -45,7 +45,9 @@ Widget TransCard2(Transaction transaction, context) {
               decoration: BoxDecoration(
                   color: transaction.output == "Approved"
                       ? Color.fromARGB(30, 64, 199, 165)
-                      : Color.fromARGB(30, 251, 189, 92),
+                      : transaction.output == "Declined"
+                          ? Color.fromARGB(30, 232, 76, 92)
+                          : Color.fromARGB(30, 251, 189, 92),
                   borderRadius:
                       BorderRadius.circular(getProportionateScreenWidth(25))),
               child: (() {
@@ -70,7 +72,11 @@ Widget TransCard2(Transaction transaction, context) {
                     "assets/icons/Membership.svg",
                     width: getProportionateScreenWidth(30),
                     height: getProportionateScreenWidth(30),
-                    color: transaction.output == "Approved" ? success : gold,
+                    color: transaction.output == "Approved"
+                        ? success
+                        : transaction.output == "Declined"
+                            ? error
+                            : gold,
                   );
                 } else
                   () {
@@ -107,9 +113,13 @@ Widget TransCard2(Transaction transaction, context) {
                     ),
                     Spacer(),
                     BodyText(
-                      text: "${transaction.outputAmount}" " SDG",
+                      text: "${transaction.outputAmount}" + "SDG".tr,
                       weight: FontWeight.bold,
-                      color: transaction.output == "Approved" ? success : gold,
+                      color: transaction.output == "Approved"
+                          ? success
+                          : transaction.output == "Declined"
+                              ? error
+                              : gold,
                     ),
                   ],
                 ),

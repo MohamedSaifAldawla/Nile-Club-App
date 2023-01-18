@@ -29,8 +29,11 @@ class Wallet extends StatelessWidget {
         )
       ]),
       child: ClipRRect(
-        borderRadius:
-            BorderRadius.all(Radius.circular(getProportionateScreenWidth(40))),
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            getProportionateScreenWidth(20),
+          ),
+        ),
         child: Container(
           width: double.infinity,
           height: getProportionateScreenWidth(190),
@@ -78,7 +81,7 @@ class Wallet extends StatelessWidget {
                                   : yellow),
                     ),
                     Text(
-                      ' SDG',
+                      'SDG'.tr,
                       style: TextStyle(
                           fontSize: getProportionateScreenWidth(20),
                           fontWeight: FontWeight.w500,
@@ -169,8 +172,11 @@ class Wallet2 extends StatelessWidget {
         )
       ]),
       child: ClipRRect(
-        borderRadius:
-            BorderRadius.all(Radius.circular(getProportionateScreenWidth(40))),
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            getProportionateScreenWidth(20),
+          ),
+        ),
         child: Container(
           width: double.infinity,
           height: getProportionateScreenWidth(190),
@@ -219,7 +225,7 @@ class Wallet2 extends StatelessWidget {
                                   : yellow),
                     ),
                     Text(
-                      ' SDG',
+                      'SDG'.tr,
                       style: TextStyle(
                           fontSize: getProportionateScreenWidth(20),
                           fontWeight: FontWeight.w500,

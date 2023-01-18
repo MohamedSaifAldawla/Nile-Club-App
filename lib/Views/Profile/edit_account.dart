@@ -76,9 +76,7 @@ class _EditAccountState extends State<EditAccount> {
                   ScreenTitle(text: "Account Details".tr),
                   const Gap(5),
                   BodyText(
-                    text:
-                        "Update your account information username \nand password"
-                            .tr,
+                    text: "Update your account information".tr,
                     maxLines: 2,
                   ),
                   const Gap(30),
