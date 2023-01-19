@@ -85,6 +85,7 @@ class WalletController extends GetxController with BaseController {
         clientPhone = res['message']['phone'];
         successShowDialog = true;
       } else if (res['statuscode'] == 3) {
+        successShowDialog = false;
         SnackBar(
             "Error".tr,
             res['message'],
