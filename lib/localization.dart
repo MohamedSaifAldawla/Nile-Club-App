@@ -339,7 +339,7 @@ class Localization implements Translations {
           "OTP Verification": "التحقق",
           "Verification code": "رمز التحقق",
           "Verification body":
-              "لقد ارسلنا اليك رساله نصيه في رقم هاتفك الرجال إدخاله في الأسفل",
+              "لقد ارسلنا اليك رساله نصيه في رقم هاتفك الرجاء إدخاله في الأسفل",
           "Please Enter your Last name": "الرجاء قم بإدخال الإسم الأخير",
           "Please Enter your Username": "الرجاء إدخال إسم المستحدم",
           "Please Enter Valid Username": "الرجاء إدخال إسم المستخدم بشكل صحيح",
