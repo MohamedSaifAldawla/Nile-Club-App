@@ -202,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                                         left: getProportionateScreenWidth(16)),
                                 height: lang == "ar"
                                     ? getProportionateScreenWidth(430)
-                                    : getProportionateScreenWidth(390),
+                                    : getProportionateScreenWidth(400),
                                 child: ListView.separated(
                                   scrollDirection: Axis.horizontal,
                                   padding: EdgeInsets.symmetric(
