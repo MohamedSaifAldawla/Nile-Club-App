@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -9,6 +7,7 @@ import 'package:jiffy/jiffy.dart';
 import 'package:nile_club/Models/blogs.dart';
 
 import '../../Animations/FadeAnimation.dart';
+import '../../Globals/globals.dart';
 import '../../Widgets/intro.dart';
 import '../../Widgets/loader.dart';
 import '../../size_config.dart';
@@ -96,7 +95,7 @@ class SingleNewsScreen extends StatelessWidget {
                   text: '${blog.content}',
                   fontSize: getProportionateScreenWidth(15),
                   color: kSecondaryColor,
-                  textAlign: TextAlign.left,
+                  textAlign: lang == "en" ? TextAlign.left : TextAlign.right,
                 ),
               ),
             ],
