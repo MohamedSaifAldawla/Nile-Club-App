@@ -193,7 +193,7 @@ class _EditAccountState extends State<EditAccount> {
                         authController.AccountUpdate(updateData: _updateData);
                       } else if (_passwordController.text.isEmpty) {
                         _updateData['name'] = _usernameController.text;
-                        // _updateData['password'] = _passwordController.text;
+                        _updateData['password'] = _passwordController.text;
                         authController.AccountUpdate(updateData: _updateData);
                       }
                     },

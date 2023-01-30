@@ -123,7 +123,7 @@ class AuthController extends GetxController with BaseController {
       Get.back();
       SnackBar(
           "Success".tr,
-          "Password has been changed".tr,
+          res['message'],
           SvgPicture.asset(
             "assets/icons/Success2.svg",
             color: Colors.white,
@@ -291,6 +291,8 @@ class AuthController extends GetxController with BaseController {
     await GetStorage().write('membership', user.value.membership);
     await GetStorage().write('ex_date', user.value.exDate);
     await GetStorage().write('img', user.value.img);
+    await GetStorage().write('text', user.value.text);
+    await GetStorage().write('text2', user.value.text2);
     // print(GetStorage().read("isMember"));
     // print(GetStorage().read("membership"));
     // print(GetStorage().read("serial"));

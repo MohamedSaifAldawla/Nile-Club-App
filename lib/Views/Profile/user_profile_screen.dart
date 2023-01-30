@@ -97,11 +97,16 @@ class ProfileScreen extends GetView<LanguageController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               BodyText(
-                                text:
-                                    "Reloaded 1 of 2162 libraries in 2,371ms (compile: 130 ms, reload: 1239 ms, reassemble: 802 ms).Reloaded 1 of 2162 libraries in 2,498ms.",
+                                text: "${GetStorage().read("text")}",
                                 weight: FontWeight.bold,
                                 textAlign: TextAlign.start,
-                                maxLines: 5,
+                                maxLines: 2,
+                              ),
+                              BodyText(
+                                text: "${GetStorage().read("text2")}",
+                                color: kSecondaryColor,
+                                textAlign: TextAlign.start,
+                                maxLines: 2,
                               ),
                             ],
                           ),

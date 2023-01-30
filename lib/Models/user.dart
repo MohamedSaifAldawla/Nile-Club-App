@@ -11,6 +11,8 @@ class User {
   String? membership;
   String? img;
   String? exDate;
+  String? text;
+  String? text2;
 
   User();
 
@@ -27,6 +29,8 @@ class User {
     membership = json['membership'].toString();
     img = json['img'].toString();
     exDate = json['ex_date'].toString();
+    text = json['text'].toString();
+    text2 = json['text2'].toString();
   }
 }
 

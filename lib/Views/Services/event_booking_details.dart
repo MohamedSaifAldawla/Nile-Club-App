@@ -65,9 +65,11 @@ class EventBookingDetails extends StatelessWidget {
                     ),
                     const Gap(10),
                     BodyText(
-                        text: "${event.ticketType}".tr,
-                        fontSize: getProportionateScreenWidth(18),
-                        weight: FontWeight.bold),
+                      text: "${event.ticketType}".tr,
+                      fontSize: getProportionateScreenWidth(18),
+                      weight: FontWeight.bold,
+                      maxLines: 2,
+                    ),
                     const Gap(30),
                     Row(
                       children: [
@@ -92,9 +94,13 @@ class EventBookingDetails extends StatelessWidget {
                           weight: FontWeight.w500,
                         ),
                         Spacer(),
-                        BodyText(
-                          text: "${event.ticketType}",
-                          weight: FontWeight.bold,
+                        Expanded(
+                          child: BodyText(
+                            text: "${event.ticketType}",
+                            weight: FontWeight.bold,
+                            maxLines: 3,
+                            textAlign: TextAlign.end,
+                          ),
                         ),
                       ],
                     ),
