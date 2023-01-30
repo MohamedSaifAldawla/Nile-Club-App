@@ -98,6 +98,25 @@ class EventBookingDetails extends StatelessWidget {
                         ),
                       ],
                     ),
+                    const Gap(15),
+                    Row(
+                      children: [
+                        BodyText(
+                          text: "Note".tr,
+                          weight: FontWeight.w500,
+                        ),
+                        Spacer(),
+                        Expanded(
+                          flex: 4,
+                          child: BodyText(
+                            text: '''${event.note}''',
+                            weight: FontWeight.bold,
+                            textAlign: TextAlign.end,
+                            maxLines: 5,
+                          ),
+                        ),
+                      ],
+                    ),
                     const Gap(20),
                     Row(
                       children: [

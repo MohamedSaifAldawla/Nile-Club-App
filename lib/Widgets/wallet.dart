@@ -237,30 +237,30 @@ class Wallet2 extends StatelessWidget {
                   ],
                 ),
                 Gap(getProportionateScreenHeight(10)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      "assets/icons/Transfer.svg",
-                      width: getProportionateScreenWidth(25),
-                      height: getProportionateScreenWidth(25),
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? kPrimaryLightColor
-                          : yellow,
-                    ),
-                    const Gap(10),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed('transfer');
-                      },
-                      child: BodyText(
-                        text: "Money Transfer".tr,
-                        color: kPrimaryLightColor,
-                        // weight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     SvgPicture.asset(
+                //       "assets/icons/Transfer.svg",
+                //       width: getProportionateScreenWidth(25),
+                //       height: getProportionateScreenWidth(25),
+                //       color: Theme.of(context).brightness == Brightness.light
+                //           ? kPrimaryLightColor
+                //           : yellow,
+                //     ),
+                //     const Gap(10),
+                //     GestureDetector(
+                //       onTap: () {
+                //         Get.toNamed('transfer');
+                //       },
+                //       child: BodyText(
+                //         text: "Money Transfer".tr,
+                //         color: kPrimaryLightColor,
+                //         // weight: FontWeight.bold,
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),

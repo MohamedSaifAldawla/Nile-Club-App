@@ -97,7 +97,7 @@ Future<void> Applive() async {
     }
   } catch (e) {
     print(e);
-    await GetStorage().write("Live", null);
+    await GetStorage().write("Live", false);
     await init();
     print("isLive : $isLive");
     Get.offAllNamed("intro");

@@ -59,36 +59,6 @@ class ProfileScreen extends GetView<LanguageController> {
                     padding: EdgeInsets.all(15),
                     child: Row(
                       children: [
-                        SizedBox(
-                          width: getProportionateScreenWidth(100),
-                          height: getProportionateScreenWidth(100),
-                          child: CircleAvatar(
-                            backgroundColor:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? kPrimaryLightColor
-                                    : kPrimaryDark3Color,
-                            backgroundImage:
-                                AssetImage("assets/images/User.png"),
-                          ),
-                        ),
-                        const Gap(10),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            BodyText(
-                              text:
-                                  "${GetStorage().read("name")}".toUpperCase(),
-                              weight: FontWeight.bold,
-                            ),
-                            const Gap(5),
-                            BodyText(
-                              text: "${GetStorage().read("phone")}",
-                              color: kSecondaryColor,
-                            ),
-                          ],
-                        ),
-                        Spacer(),
                         GestureDetector(
                           onTap: () {
                             Get.dialog(
@@ -117,9 +87,25 @@ class ProfileScreen extends GetView<LanguageController> {
                             data: accountId,
                             backgroundColor: kPrimaryLightColor,
                             version: QrVersions.auto,
-                            size: getProportionateScreenWidth(70),
+                            size: getProportionateScreenWidth(90),
                           ),
-                        )
+                        ),
+                        const Gap(10),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BodyText(
+                                text:
+                                    "Reloaded 1 of 2162 libraries in 2,371ms (compile: 130 ms, reload: 1239 ms, reassemble: 802 ms).Reloaded 1 of 2162 libraries in 2,498ms.",
+                                weight: FontWeight.bold,
+                                textAlign: TextAlign.start,
+                                maxLines: 5,
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -598,3 +584,61 @@ class ProfileScreen extends GetView<LanguageController> {
     );
   }
 }
+
+
+// SizedBox(
+                        //   width: getProportionateScreenWidth(100),
+                        //   height: getProportionateScreenWidth(100),
+                        //   child: CircleAvatar(
+                        //     backgroundColor:
+                        //         Theme.of(context).brightness == Brightness.light
+                        //             ? kPrimaryLightColor
+                        //             : kPrimaryDark3Color,
+                        //     backgroundImage:
+                        //         AssetImage("assets/images/User.png"),
+                        //   ),
+                        // ),
+
+  // BodyText(
+                            //   text:
+                            //       "${GetStorage().read("name")}".toUpperCase(),
+                            //   weight: FontWeight.bold,
+                            // ),
+                            // const Gap(5),
+                            // BodyText(
+                            //   text: "${GetStorage().read("phone")}",
+                            //   color: kSecondaryColor,
+                            // ),
+
+                            //Spacer(),
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     Get.dialog(
+                        //       Dialog(
+                        //         shape: RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(
+                        //               getProportionateScreenWidth(15)),
+                        //         ),
+                        //         child: Container(
+                        //           width: double.infinity,
+                        //           height: getProportionateScreenWidth(270),
+                        //           color: kPrimaryLightColor,
+                        //           child: Center(
+                        //             child: QrImage(
+                        //               data: accountId,
+                        //               backgroundColor: kPrimaryLightColor,
+                        //               version: QrVersions.auto,
+                        //               size: getProportionateScreenWidth(200),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     );
+                        //   },
+                        //   child: QrImage(
+                        //     data: accountId,
+                        //     backgroundColor: kPrimaryLightColor,
+                        //     version: QrVersions.auto,
+                        //     size: getProportionateScreenWidth(70),
+                        //   ),
+                        // )

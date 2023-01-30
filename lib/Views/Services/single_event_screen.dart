@@ -18,13 +18,12 @@ class SingleEventScreen extends StatelessWidget {
 
   final servicesController = Get.find<ServicesController>();
   final EventsCinema eventsCinema;
-  final Map<String, dynamic> _offerData = {};
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Event Details".tr),
+        title: Text("Booking Details".tr),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

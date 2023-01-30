@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:nile_club/Widgets/intro.dart';
 
+import '../Globals/globals.dart';
 import '../size_config.dart';
 import '../theme.dart';
 import 'loader.dart';
@@ -189,7 +190,7 @@ class NewsCard2 extends StatelessWidget {
                   text: body,
                   fontSize: getProportionateScreenWidth(13),
                   color: kSecondaryColor,
-                  textAlign: TextAlign.left,
+                  textAlign: lang == "en" ? TextAlign.left : TextAlign.right,
                   maxLines: 2,
                 ),
               ],

@@ -106,10 +106,10 @@ class AuthController extends GetxController with BaseController {
       name: updateData['name'],
       password: updateData['password'],
     );
+    hideLoading();
     final res = json.decode(response.data);
     print(res);
     if (res['statuscode'] == 3) {
-      hideLoading();
       SnackBar(
           "Error".tr,
           res['message'],
@@ -120,7 +120,7 @@ class AuthController extends GetxController with BaseController {
           error,
           SnackPosition.TOP);
     } else if (res['statuscode'] == 0) {
-      hideLoading();
+      Get.back();
       SnackBar(
           "Success".tr,
           "Password has been changed".tr,
@@ -130,10 +130,7 @@ class AuthController extends GetxController with BaseController {
           ),
           success,
           SnackPosition.TOP);
-      Get.back();
     }
-
-    hideLoading();
 
     //print(checkOut);
   } //end of Account Update

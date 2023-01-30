@@ -124,30 +124,6 @@ class _EditAccountState extends State<EditAccount> {
                     obscureText: _hidePassword,
                     keyboardType: TextInputType.text,
                     onSaved: (newValue) => password = newValue,
-                    onChanged: (value) {
-                      if (value == null || value.isNotEmpty) {
-                        removeError(error: "Please Enter your password".tr);
-                      }
-                      if (value!.length >= authController.passLength) {
-                        removeError(error: "Password is too short".tr);
-                      }
-                      if (value == null || value.isEmpty) {
-                        addError(error: "Please Enter your password".tr);
-                      }
-                      if (value.length < authController.passLength) {
-                        addError(error: "Password is too short".tr);
-                      }
-                    },
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        addError(error: "Please Enter your password".tr);
-                        return "";
-                      } else if (value.length < authController.passLength) {
-                        addError(error: "Password is too short".tr);
-                        return "";
-                      }
-                      return null;
-                    },
                   ),
                   const Gap(25),
                   InputField(
@@ -159,58 +135,69 @@ class _EditAccountState extends State<EditAccount> {
                     obscureText: _hidePassword,
                     keyboardType: TextInputType.text,
                     onSaved: (newValue) => confirm = newValue,
-                    onChanged: (value) {
-                      if (value == null || value.isNotEmpty) {
-                        removeError(error: "Please Re-Enter your password".tr);
-                      }
-                      if (value!.length >= authController.passLength) {
-                        removeError(
-                            error: "Confirmation Password is too short".tr);
-                      }
-                      if (_passwordController.value ==
-                          _confirmPasswordController.value) {
-                        removeError(error: "Password did not matched".tr);
-                      }
-                      if (value == null || value.isEmpty) {
-                        addError(error: "Please Re-Enter your password".tr);
-                      }
-                      if (value.length < 8) {
-                        addError(
-                            error: "Confirmation Password is too short".tr);
-                      }
-                      if (_passwordController.value !=
-                          _confirmPasswordController.value) {
-                        addError(error: "Password did not matched".tr);
-                      }
-                    },
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        addError(error: "Please Re-Enter your password".tr);
-                        return "";
-                      } else if (value.length < authController.passLength) {
-                        addError(
-                            error: "Confirmation Password is too short".tr);
-                        return "";
-                      } else if (_passwordController.value !=
-                          _confirmPasswordController.value) {
-                        addError(error: "Password did not matched".tr);
-                        return "";
-                      }
-                      return null;
-                    },
                   ),
                   const Gap(10),
                   FormError(errors: errors),
                   const Gap(20),
                   PrimaryButton(
-                      text: "confirm Upadte".tr,
-                      press: () {
-                        if (_formKey.currentState!.validate()) {
-                          _updateData['name'] = _usernameController.text;
-                          _updateData['password'] = _passwordController.text;
-                          authController.AccountUpdate(updateData: _updateData);
+                    text: "confirm Upadte".tr,
+                    press: () {
+                      if (_passwordController.text.isNotEmpty) {
+                        if (_passwordController.text.length <
+                            authController.passLength) {
+                          addError(error: "Password is too short".tr);
                         }
-                      }),
+                        if (_passwordController.text.length >=
+                            authController.passLength) {
+                          removeError(error: "Password is too short".tr);
+                        }
+
+                        if (_confirmPasswordController.text.isEmpty) {
+                          addError(error: "Please Re-Enter your password".tr);
+                        }
+                        if (_confirmPasswordController.text.isNotEmpty) {
+                          removeError(
+                              error: "Please Re-Enter your password".tr);
+                        }
+
+                        if (_confirmPasswordController.text.length <
+                            authController.passLength) {
+                          addError(
+                              error: "Confirmation Password is too short".tr);
+                        }
+                        if (_confirmPasswordController.text.length >=
+                            authController.passLength) {
+                          removeError(
+                              error: "Confirmation Password is too short".tr);
+                        }
+
+                        if (_passwordController.value !=
+                            _confirmPasswordController.value) {
+                          addError(error: "Password did not matched".tr);
+                        }
+                        if (_passwordController.value ==
+                            _confirmPasswordController.value) {
+                          removeError(error: "Password did not matched".tr);
+                        }
+                      }
+                      if (_passwordController.text.isNotEmpty &&
+                          _confirmPasswordController.text.isNotEmpty &&
+                          _passwordController.text.length >=
+                              authController.passLength &&
+                          _confirmPasswordController.text.length >=
+                              authController.passLength &&
+                          _passwordController.value ==
+                              _confirmPasswordController.value) {
+                        _updateData['name'] = _usernameController.text;
+                        _updateData['password'] = _passwordController.text;
+                        authController.AccountUpdate(updateData: _updateData);
+                      } else if (_passwordController.text.isEmpty) {
+                        _updateData['name'] = _usernameController.text;
+                        // _updateData['password'] = _passwordController.text;
+                        authController.AccountUpdate(updateData: _updateData);
+                      }
+                    },
+                  ),
                 ],
               ),
             ),
@@ -220,3 +207,79 @@ class _EditAccountState extends State<EditAccount> {
     );
   }
 }
+
+
+
+
+ // if (_formKey.currentState!.validate()) {
+                      //   _updateData['name'] = _usernameController.text;
+                      //   _updateData['password'] = _passwordController.text;
+                      //   authController.AccountUpdate(updateData: _updateData);
+                      // }
+
+
+
+
+                    // onChanged: (value) {
+                    //   if (value == null || value.isNotEmpty) {
+                    //     removeError(error: "Please Enter your password".tr);
+                    //   }
+                    //   if (value!.length >= authController.passLength) {
+                    //     removeError(error: "Password is too short".tr);
+                    //   }
+                    //   if (value == null || value.isEmpty) {
+                    //     addError(error: "Please Enter your password".tr);
+                    //   }
+                    //   if (value.length < authController.passLength) {
+                    //     addError(error: "Password is too short".tr);
+                    //   }
+                    // },
+                    // validator: (value) {
+                    //   if (value == null || value.isEmpty) {
+                    //     addError(error: "Please Enter your password".tr);
+                    //     return "";
+                    //   } else if (value.length < authController.passLength) {
+                    //     addError(error: "Password is too short".tr);
+                    //     return "";
+                    //   }
+                    //   return null;
+                    // },
+ // onChanged: (value) {
+                    //   if (value == null || value.isNotEmpty) {
+                    //     removeError(error: "Please Re-Enter your password".tr);
+                    //   }
+                    //   if (value!.length >= authController.passLength) {
+                    //     removeError(
+                    //         error: "Confirmation Password is too short".tr);
+                    //   }
+                    //   if (_passwordController.value ==
+                    //       _confirmPasswordController.value) {
+                    //     removeError(error: "Password did not matched".tr);
+                    //   }
+                    //   if (value == null || value.isEmpty) {
+                    //     addError(error: "Please Re-Enter your password".tr);
+                    //   }
+                    //   if (value.length < 8) {
+                    //     addError(
+                    //         error: "Confirmation Password is too short".tr);
+                    //   }
+                    //   if (_passwordController.value !=
+                    //       _confirmPasswordController.value) {
+                    //     addError(error: "Password did not matched".tr);
+                    //   }
+                    // },
+                    // validator: (value) {
+                    //   if (value == null || value.isEmpty) {
+                    //     addError(error: "Please Re-Enter your password".tr);
+                    //     return "";
+                    //   } else if (value.length < authController.passLength) {
+                    //     addError(
+                    //         error: "Confirmation Password is too short".tr);
+                    //     return "";
+                    //   } else if (_passwordController.value !=
+                    //       _confirmPasswordController.value) {
+                    //     addError(error: "Password did not matched".tr);
+                    //     return "";
+                    //   }
+                    //   return null;
+                    // },
