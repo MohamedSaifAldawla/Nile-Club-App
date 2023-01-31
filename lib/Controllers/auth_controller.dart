@@ -32,6 +32,8 @@ class AuthController extends GetxController with BaseController {
 //--------------------- Login --------------------------//
 
   Future<void> login({required Map<String, dynamic> loginData}) async {
+    await init();
+
     print(loginData);
     showLoading();
     var response = await Api.login(loginData: loginData);
@@ -56,7 +58,9 @@ class AuthController extends GetxController with BaseController {
       isLoggedIn.value = true;
       hideLoading();
       Get.offAllNamed("homepage");
-      profileController.getMembershipsInfo();
+      await profileController.getMembershipsInfo();
+
+      //await profileController.getMembershipsInfo();
     }
   } //end of login
 
@@ -119,6 +123,18 @@ class AuthController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else if (res['statuscode'] == 0) {
       Get.back();
       SnackBar(
@@ -272,6 +288,7 @@ class AuthController extends GetxController with BaseController {
     await GetStorage().remove('membership');
     await GetStorage().remove('ex_date');
     await GetStorage().remove('img');
+    await init();
     isLoggedIn.value = false;
     Get.offAllNamed("login");
   } //end of logout
@@ -305,11 +322,10 @@ class AuthController extends GetxController with BaseController {
     await GetStorage().write('login_token', token);
     print("Token : ${GetStorage().read("login_token")}");
     if (await GetStorage().read('login_token') != null) {
-      transController.GetHistory();
-      blogController.getBlogs();
+      //await transController.GetHistory();
+      await blogController.getBlogs();
+      await profileController.getMembershipsList();
     }
-
-//------------------- Token Decode -------------------------------//
   }
 
 //--------------------- Snack Bar --------------------------//

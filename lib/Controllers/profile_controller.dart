@@ -53,8 +53,10 @@ class ProfileController extends GetxController with BaseController {
 
   @override
   void onInit() async {
-    getMembershipsList();
-    getMembershipsInfo();
+    // if (await GetStorage().read('login_token') != null) {
+    //   getMembershipsList();
+    //   getMembershipsInfo();
+    // }
 
     bool? isDark = await GetStorage().read("isDark");
     bool? fAuth = await GetStorage().read("fingerAuth");
@@ -78,6 +80,8 @@ class ProfileController extends GetxController with BaseController {
     //showLoading();
     var response = await Api.GetMembershipsList();
     final res = json.decode(response.data);
+    //print("getMembershipsList $res");
+
     if (res['statuscode'] == 3) {
       SnackBar(
           "Error".tr,
@@ -88,6 +92,18 @@ class ProfileController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       MembershipList membershipreponse = MembershipList.fromJson(res);
       memberships.clear();
@@ -114,6 +130,18 @@ class ProfileController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       ServiceList servicereponse = ServiceList.fromJson(res);
       services.clear();
@@ -140,6 +168,18 @@ class ProfileController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       TransMembershipList transMembershipsreponse =
           TransMembershipList.fromJson(res);
@@ -171,6 +211,18 @@ class ProfileController extends GetxController with BaseController {
             error,
             SnackPosition.TOP);
       }
+      if (res['statuscode'] == 414) {
+        SnackBar(
+            "Error".tr,
+            res['message'],
+            SvgPicture.asset(
+              "assets/icons/Close.svg",
+              color: Colors.white,
+            ),
+            error,
+            SnackPosition.TOP);
+        authController.logout();
+      }
       if (res['statuscode'] == 0) {
         hideLoading();
         membershipReserve.clear();
@@ -199,10 +251,25 @@ class ProfileController extends GetxController with BaseController {
   //--------------------- Get Memberships Info --------------------------//
   Future<void> getMembershipsInfo() async {
     membershipReserve.clear();
+    print(await GetStorage().read('login_token'));
     var response = await Api.GetMembershipsInfo();
     final res = json.decode(response.data);
+    print("Memberships Info : $res");
+
     if (res['statuscode'] == 3) {
       print("Memberships Info : $res['message']");
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      //authController.logout();
     }
     if (res['statuscode'] == 0) {
       membershipReserve.clear();
@@ -226,6 +293,18 @@ class ProfileController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else if (res['statuscode'] == 0) {
       TransMembershipList transMembershipsreponse =
           TransMembershipList.fromJson(res);
@@ -273,6 +352,18 @@ class ProfileController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else if (res['statuscode'] == 0) {
       print(res);
       title.text = res['message']['name'];
@@ -322,6 +413,18 @@ class ProfileController extends GetxController with BaseController {
           SnackPosition.TOP,
           2);
     }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
+    }
     if (res['statuscode'] == 0) {
       local_auth.SnackBar(
           "Success".tr,
@@ -354,6 +457,18 @@ class ProfileController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     }
     if (res['statuscode'] == 0) {
       hideLoading();
@@ -391,6 +506,18 @@ class ProfileController extends GetxController with BaseController {
           success,
           SnackPosition.TOP);
     }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
+    }
     if (res['statuscode'] == 3) {
       Get.back();
       SnackBar(
@@ -422,6 +549,18 @@ class ProfileController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else if (res['statuscode'] == 0) {
       SnackBar(
           "Success".tr,

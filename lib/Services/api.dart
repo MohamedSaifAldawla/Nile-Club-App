@@ -334,6 +334,8 @@ class Api {
     FormData formData = FormData.fromMap(
       {
         'lang': lang,
+        'userid': uid,
+        'token': token,
         'app_version': app_version,
         'cat_id': catId,
       },
@@ -347,6 +349,8 @@ class Api {
     FormData formData = FormData.fromMap(
       {
         'lang': lang,
+        'userid': uid,
+        'token': token,
         'app_version': app_version,
         'cat_id': catId,
       },
@@ -383,6 +387,8 @@ class Api {
     FormData formData = FormData.fromMap(
       {
         'lang': lang,
+        'userid': uid,
+        'token': token,
         'app_version': app_version,
         'event_id': eventId,
       },
@@ -396,6 +402,8 @@ class Api {
     FormData formData = FormData.fromMap(
       {
         'lang': lang,
+        'userid': uid,
+        'token': token,
         'app_version': app_version,
       },
     );
@@ -446,7 +454,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await GetStorage().read('login_token'),
         'app_version': app_version,
       },
     );
@@ -455,15 +463,12 @@ class Api {
 
   //--------------------- Get History --------------------------//
 
-  static Future<Response> GetHistory({
-    required String uid,
-    required String token,
-  }) async {
+  static Future<Response> GetHistory() async {
     FormData formData = FormData.fromMap(
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await GetStorage().read('login_token'),
         'app_version': app_version,
       },
     );
@@ -572,6 +577,8 @@ class Api {
     FormData formData = FormData.fromMap(
       {
         'lang': lang,
+        'userid': uid,
+        'token': token,
         'app_version': app_version,
       },
     );

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -54,6 +53,18 @@ class WalletController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       await GetStorage().write('balance', res['balance']);
       init();
@@ -84,6 +95,18 @@ class WalletController extends GetxController with BaseController {
         clientName = res['message']['shop_name'];
         clientPhone = res['message']['phone'];
         successShowDialog = true;
+      }
+      if (res['statuscode'] == 414) {
+        SnackBar(
+            "Error".tr,
+            res['message'],
+            SvgPicture.asset(
+              "assets/icons/Close.svg",
+              color: Colors.white,
+            ),
+            error,
+            SnackPosition.TOP);
+        authController.logout();
       } else if (res['statuscode'] == 3) {
         successShowDialog = false;
         SnackBar(
@@ -127,6 +150,18 @@ class WalletController extends GetxController with BaseController {
       moneyTransfer.clear();
       moneyTransfer.addAll(res);
       Get.offAllNamed('transferTicket');
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else if (res['statuscode'] == 3) {
       SnackBar(
           "Error".tr,

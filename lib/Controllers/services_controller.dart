@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:nile_club/Controllers/trans_controller.dart';
 import 'package:nile_club/Models/services.dart';
+import '../Globals/globals.dart';
 import '../Models/eventsCinema.dart';
 import '../Models/eventsTickets.dart';
-import '../Models/services.dart';
 import '../Services/api.dart';
 import '../Views/Services/single_event_screen.dart';
 import '../theme.dart';
@@ -27,8 +27,9 @@ class ServicesController extends GetxController with BaseController {
 
   @override
   void onInit() async {
-    await getHomeOffers();
-
+    // if (await GetStorage().read('login_token') != null) {
+    //   await getHomeOffers();
+    // }
     counter.value = 0;
     total.value = 0;
     super.onInit();
@@ -51,6 +52,18 @@ class ServicesController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       ServiceList servicereponse = ServiceList.fromJson(res);
       services.clear();
@@ -77,6 +90,18 @@ class ServicesController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       ServiceList offersreponse = ServiceList.fromJson(res);
       offers.clear();
@@ -103,6 +128,18 @@ class ServicesController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       ServiceList offersreponse = ServiceList.fromJson(res);
       offers.clear();
@@ -130,6 +167,18 @@ class ServicesController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       EventCinemaList cinemareponse = EventCinemaList.fromJson(res);
       eventsCinema.clear();
@@ -156,6 +205,18 @@ class ServicesController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       EventCinemaList eventsreponse = EventCinemaList.fromJson(res);
       eventsCinema.clear();
@@ -188,6 +249,18 @@ class ServicesController extends GetxController with BaseController {
       print("Balance : ${GetStorage().read('balance')}");
       transController.GetHistory();
       Get.offAllNamed('ticketinfo');
+    }
+    if (serviceReserve['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          serviceReserve['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else if (serviceReserve['statuscode'] == 3) {
       SnackBar(
           "Error".tr,
@@ -221,6 +294,18 @@ class ServicesController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       EventsTicketsList eventsreponse = EventsTicketsList.fromJson(res);
       eventsTickets.clear();

@@ -87,7 +87,7 @@ Future<void> Applive() async {
       await init();
       print("isLive : $isLive");
       await CheckToken2();
-      Get.offAllNamed("intro");
+      // Get.offAllNamed("intro");
     }
     if (res['statuscode'] == 3) {
       await GetStorage().write("Live", false);
@@ -107,12 +107,21 @@ Future<void> Applive() async {
 Future<void> CheckToken2() async {
   if (await GetStorage().read('login_token') == null) {
     print("No Token");
+    Get.offAllNamed("intro");
   } else if (await GetStorage().read('login_token') != null) {
     var response = await Api.ValidToken(uid: GetStorage().read("id"));
     print("Token : $response");
     final res = json.decode(response.data);
+    if (res['message'] == 'valid token') {
+      await blogsController.getBlogs();
+      await servicesController.getHomeOffers();
+      await profileController.getMembershipsList();
+      await profileController.getMembershipsInfo();
+      Get.offAllNamed("intro");
+    }
     if (res['message'] == 'invalid token') {
       await GetStorage().remove('login_token');
+      Get.offAllNamed("intro");
     }
   }
 }

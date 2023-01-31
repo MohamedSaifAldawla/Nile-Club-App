@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:nile_club/Models/blogs.dart';
 import 'package:nile_club/theme.dart';
+import '../Globals/globals.dart';
 import '../Services/api.dart';
 import 'base_controller.dart';
 
@@ -13,7 +15,9 @@ class BlogsController extends GetxController with BaseController {
 
   @override
   void onInit() async {
-    await getBlogs();
+    // if (await GetStorage().read('login_token') != null) {
+    //   await getBlogs();
+    // }
     super.onInit();
   }
 
@@ -23,6 +27,8 @@ class BlogsController extends GetxController with BaseController {
     isLoading.value = true;
     var response = await Api.Blogs();
     final res = json.decode(response.data);
+    //print("Blogs $res");
+
     if (res['statuscode'] == 3) {
       SnackBar(
           "Error".tr,
@@ -33,6 +39,18 @@ class BlogsController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      authController.logout();
     } else {
       BlogsList blogsreponse = BlogsList.fromJson(res);
       blogs.clear();

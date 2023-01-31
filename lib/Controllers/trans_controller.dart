@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:nile_club/Globals/globals.dart';
 import 'package:nile_club/theme.dart';
 import '../Models/transactions.dart';
 import '../Services/api.dart';
@@ -23,31 +24,38 @@ class TransController extends GetxController with BaseController {
 //--------------------- Get History  --------------------------//
 
   Future<void> GetHistory() async {
-    var token = await GetStorage().read('login_token');
-    var userID = await GetStorage().read('id');
-
-    if (token == null) return;
-    if (token != null) {
-      isLoading.value = true;
-      var response = await Api.GetHistory(uid: userID, token: token);
-      final res = json.decode(response.data);
-      if (res['statuscode'] == 3) {
-        SnackBar(
-            "Error".tr,
-            res['message'],
-            SvgPicture.asset(
-              "assets/icons/Close.svg",
-              color: Colors.white,
-            ),
-            error,
-            SnackPosition.TOP);
-      } else {
-        TransList transreponse = TransList.fromJson(res);
-        trans.clear();
-        trans.addAll(transreponse.trans);
-        isLoading.value = false;
-        print("Transaction :$trans");
-      }
+    isLoading.value = true;
+    var response = await Api.GetHistory();
+    final res = json.decode(response.data);
+    //print("Transaction :$res");
+    if (res['statuscode'] == 3) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+    }
+    if (res['statuscode'] == 414) {
+      SnackBar(
+          "Error".tr,
+          res['message'],
+          SvgPicture.asset(
+            "assets/icons/Close.svg",
+            color: Colors.white,
+          ),
+          error,
+          SnackPosition.TOP);
+      await authController.logout();
+    } else {
+      TransList transreponse = TransList.fromJson(res);
+      trans.clear();
+      trans.addAll(transreponse.trans);
+      isLoading.value = false;
+      print("Transaction :$trans");
     }
   } //end of Get History
 
