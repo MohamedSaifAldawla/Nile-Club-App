@@ -7,6 +7,7 @@ import 'package:nile_club/Models/eventsCinema.dart';
 import 'package:nile_club/Views/Services/event_booking_details.dart';
 import '../../Animations/FadeAnimation.dart';
 import '../../Controllers/services_controller.dart';
+import '../../Globals/globals.dart';
 import '../../Models/eventsTickets.dart';
 import '../../Widgets/intro.dart';
 import '../../Widgets/loader.dart';
@@ -155,7 +156,7 @@ class SingleEventScreen extends StatelessWidget {
                     text: '${eventsCinema.details}',
                     fontSize: getProportionateScreenWidth(15),
                     color: kSecondaryColor,
-                    textAlign: TextAlign.left,
+                    textAlign: lang == "en" ? TextAlign.left : TextAlign.right,
                   ),
                 ),
               ),

@@ -176,7 +176,7 @@ Widget EventsCard(
               child: Row(
                 children: [
                   BodyText(
-                    text: "See more details",
+                    text: "See more details".tr,
                     textAlign: TextAlign.start,
                     fontSize: getProportionateScreenWidth(15),
                     color: yellow,
