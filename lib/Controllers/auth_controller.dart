@@ -33,7 +33,6 @@ class AuthController extends GetxController with BaseController {
 
   Future<void> login({required Map<String, dynamic> loginData}) async {
     await init();
-
     print(loginData);
     showLoading();
     var response = await Api.login(loginData: loginData);
@@ -67,6 +66,7 @@ class AuthController extends GetxController with BaseController {
   //--------------------- Register --------------------------//
 
   Future<void> register({required Map<String, dynamic> registerData}) async {
+    await init();
     showLoading();
     var response = await Api.register(registerData: registerData);
     final res = json.decode(response.data);

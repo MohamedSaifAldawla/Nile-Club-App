@@ -11,6 +11,7 @@ class Localization implements Translations {
           "WelcomeText": "Welcome to Nile Club App \nLet's book your ticket",
           "Login": "Login",
           "Register": "Register",
+          "Register2": "Register",
           "Intro Register": "Register",
           "Register New Account": "Register New Account",
           "Complete yor details": "Complete your details and continue",
