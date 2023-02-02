@@ -108,11 +108,12 @@ Future<void> CheckToken2() async {
   if (await GetStorage().read('login_token') == null) {
     print("No Token");
     Get.offAllNamed("intro");
-  } else if (await GetStorage().read('login_token') != null) {
+  } else if (await token != null) {
     var response = await Api.ValidToken(uid: GetStorage().read("id"));
     print("Token : $response");
     final res = json.decode(response.data);
     if (res['message'] == 'valid token') {
+      print("Token : $token");
       await blogsController.getBlogs();
       await servicesController.getHomeOffers();
       await profileController.getMembershipsList();

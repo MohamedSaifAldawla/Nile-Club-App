@@ -131,7 +131,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'name': name,
         'password': password,
         'app_version': app_version,
@@ -196,7 +196,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
       },
     );
@@ -210,7 +210,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
       },
     );
@@ -224,7 +224,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
         'name': subscribeData['name'],
         'type': subscribeData['type'],
@@ -255,7 +255,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
         'name': editSubscribeData['name'],
         'memberId': editSubscribeData['memberId'],
@@ -285,7 +285,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
         'formid': GetStorage().read('formid'),
         'type': familyData['type'],
@@ -316,7 +316,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'account_id': accountID,
         'serial': serial,
         'app_version': app_version,
@@ -335,7 +335,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
         'cat_id': catId,
       },
@@ -350,7 +350,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
         'cat_id': catId,
       },
@@ -369,7 +369,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
         'tt_id': ticketId,
         'tk_qty': ticketQuantity,
@@ -388,7 +388,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
         'event_id': eventId,
       },
@@ -403,7 +403,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
       },
     );
@@ -415,7 +415,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
       },
     );
@@ -427,7 +427,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
       },
     );
@@ -441,7 +441,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'memberid': memberid,
         'app_version': app_version,
       },
@@ -454,7 +454,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': await GetStorage().read('login_token'),
+        'token': await token,
         'app_version': app_version,
       },
     );
@@ -468,7 +468,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': await GetStorage().read('login_token'),
+        'token': await token,
         'app_version': app_version,
       },
     );
@@ -494,7 +494,7 @@ class Api {
         'lang': lang,
         'userid': uid,
         'amt': amount,
-        'token': token,
+        'token': await token,
         'app_version': app_version
       },
     );
@@ -529,7 +529,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
       },
     );
@@ -543,7 +543,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
         'account_id': cl_accountId,
       },
@@ -560,7 +560,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'amount': amount,
         'app_version': app_version,
         'trans_type': transType,
@@ -578,7 +578,7 @@ class Api {
       {
         'lang': lang,
         'userid': uid,
-        'token': token,
+        'token': await token,
         'app_version': app_version,
       },
     );

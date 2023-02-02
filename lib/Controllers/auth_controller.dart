@@ -32,7 +32,6 @@ class AuthController extends GetxController with BaseController {
 //--------------------- Login --------------------------//
 
   Future<void> login({required Map<String, dynamic> loginData}) async {
-    await init();
     print(loginData);
     showLoading();
     var response = await Api.login(loginData: loginData);
@@ -66,7 +65,6 @@ class AuthController extends GetxController with BaseController {
   //--------------------- Register --------------------------//
 
   Future<void> register({required Map<String, dynamic> registerData}) async {
-    await init();
     showLoading();
     var response = await Api.register(registerData: registerData);
     final res = json.decode(response.data);
@@ -288,7 +286,6 @@ class AuthController extends GetxController with BaseController {
     await GetStorage().remove('membership');
     await GetStorage().remove('ex_date');
     await GetStorage().remove('img');
-    await init();
     isLoggedIn.value = false;
     Get.offAllNamed("login");
   } //end of logout
@@ -310,19 +307,15 @@ class AuthController extends GetxController with BaseController {
     await GetStorage().write('img', user.value.img);
     await GetStorage().write('text', user.value.text);
     await GetStorage().write('text2', user.value.text2);
-    // print(GetStorage().read("isMember"));
-    // print(GetStorage().read("membership"));
-    // print(GetStorage().read("serial"));
-    //print(GetStorage().read("name"));
 
     //------------------- Token Decode -------------------------------//
     Codec<String, String> stringToBase64 = utf8.fuse(base64);
     var parsedtocken = await GetStorage().read('login_token');
     token = stringToBase64.decode(parsedtocken);
     await GetStorage().write('login_token', token);
-    print("Token : ${GetStorage().read("login_token")}");
-    if (await GetStorage().read('login_token') != null) {
+    if (await token != null) {
       //await transController.GetHistory();
+      print("Token : ${GetStorage().read("login_token")}");
       await blogController.getBlogs();
       await profileController.getMembershipsList();
     }

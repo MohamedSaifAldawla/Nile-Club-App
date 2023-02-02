@@ -255,7 +255,6 @@ class ProfileController extends GetxController with BaseController {
     var response = await Api.GetMembershipsInfo();
     final res = json.decode(response.data);
     print("Memberships Info : $res");
-
     if (res['statuscode'] == 3) {
       print("Memberships Info : $res['message']");
     }
@@ -274,7 +273,7 @@ class ProfileController extends GetxController with BaseController {
     if (res['statuscode'] == 0) {
       membershipReserve.clear();
       membershipReserve.addAll(res['message']);
-      print("Memberships Info : $membershipReserve");
+      //print("Memberships Info : $membershipReserve");
     }
   }
 

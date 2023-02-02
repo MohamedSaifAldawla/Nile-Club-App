@@ -209,7 +209,7 @@ class HomeScreen extends StatelessWidget {
                                     vertical: getProportionateScreenWidth(25),
                                   ),
                                   physics: BouncingScrollPhysics(),
-                                  itemCount: blogsController.blogs.length,
+                                  itemCount: 5,
                                   itemBuilder: (context, index) =>
                                       GestureDetector(
                                     onTap: () {
@@ -250,7 +250,7 @@ class HomeScreen extends StatelessWidget {
   Future<void> handleRefresh() async {
     init();
     walletController.Balance();
-    transController.GetHistory();
+    //transController.GetHistory();
     blogsController.getBlogs();
     return await Future.delayed(Duration(seconds: 3));
   }

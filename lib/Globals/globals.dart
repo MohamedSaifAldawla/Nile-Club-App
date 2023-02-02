@@ -28,7 +28,7 @@ var uid;
 var balance;
 var name;
 var phone;
-var token;
+var token = GetStorage().read('login_token');
 var accountId;
 var isMember;
 var formId;
@@ -52,7 +52,6 @@ Future<void> init() async {
   balance = await GetStorage().read("balance");
   name = await GetStorage().read("name");
   phone = await GetStorage().read('phone');
-  token = await GetStorage().read('login_token');
   accountId = await GetStorage().read('account_id');
   isMember = await GetStorage().read('isMember');
   formId = await GetStorage().read('formid');
