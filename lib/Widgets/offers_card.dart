@@ -1,11 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:nile_club/Widgets/intro.dart';
 import '../size_config.dart';
 import '../theme.dart';
+import 'loader.dart';
 
 class OffersCard extends StatelessWidget {
   OffersCard({
@@ -13,6 +14,7 @@ class OffersCard extends StatelessWidget {
     required this.newPrice,
     required this.body,
     required this.title,
+    required this.subTitle,
     required this.img,
     required this.discount,
     this.width,
@@ -20,7 +22,7 @@ class OffersCard extends StatelessWidget {
   }) : super(key: key);
   String newPrice;
   String discount;
-  String body, title, img;
+  String body, title, subTitle, img;
   double? width;
   double? height;
   @override
@@ -59,16 +61,22 @@ class OffersCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // SvgPicture.asset(
-                //   "assets/icons/Discount.svg",
-                //   width: getProportionateScreenWidth(40),
-                //   height: getProportionateScreenWidth(40),
-                //   color: yellow,
-                // ),
-                Image.network(
-                  img,
-                  width: getProportionateScreenWidth(40),
-                  height: getProportionateScreenWidth(40),
+                CachedNetworkImage(
+                  imageUrl: img,
+                  placeholder: (context, url) => Loader(),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.error,
+                    size: 60,
+                  ),
+                  imageBuilder: (context, imageProvider) => Container(
+                    width: getProportionateScreenWidth(40.0),
+                    height: getProportionateScreenWidth(40.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover),
+                    ),
+                  ),
                 ),
                 const Gap(10),
                 Column(
@@ -78,6 +86,11 @@ class OffersCard extends StatelessWidget {
                       text: title,
                       fontSize: getProportionateScreenWidth(15),
                       weight: FontWeight.bold,
+                    ),
+                    BodyText(
+                      text: subTitle,
+                      fontSize: getProportionateScreenWidth(14),
+                      color: kSecondaryColor,
                     ),
                     const Gap(3),
                     Row(
@@ -115,21 +128,6 @@ class OffersCard extends StatelessWidget {
               textAlign: TextAlign.left,
               maxLines: 2,
             ),
-            // Expanded(
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.end,
-            //     children: [
-            //       SvgPicture.asset(
-            //         lang == "ar"
-            //             ? "assets/icons/Back.svg"
-            //             : "assets/icons/arrow_right.svg",
-            //         width: getProportionateScreenWidth(13),
-            //         height: getProportionateScreenHeight(13),
-            //         color: kSecondaryColor,
-            //       ),
-            //     ],
-            //   ),
-            // ),
           ],
         ),
       ),

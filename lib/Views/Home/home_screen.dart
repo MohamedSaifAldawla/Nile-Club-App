@@ -75,8 +75,8 @@ class HomeScreen extends StatelessWidget {
                                 : EdgeInsets.only(
                                     left: getProportionateScreenWidth(16)),
                             height: lang == "ar"
-                                ? getProportionateScreenWidth(200)
-                                : getProportionateScreenWidth(180),
+                                ? getProportionateScreenWidth(230)
+                                : getProportionateScreenWidth(200),
                             child: ListView.separated(
                               scrollDirection: Axis.horizontal,
                               padding: EdgeInsets.symmetric(
@@ -100,6 +100,8 @@ class HomeScreen extends StatelessWidget {
                                       '${servicesController.offers[index].note}',
                                   title:
                                       '${servicesController.offers[index].ticket_type}',
+                                  subTitle:
+                                      '${servicesController.offers[index].title}',
                                 ),
                               ),
                               separatorBuilder: (context, index) => SizedBox(
@@ -255,6 +257,7 @@ class HomeScreen extends StatelessWidget {
     init();
     walletController.Balance();
     //transController.GetHistory();
+    await servicesController.getHomeOffers();
     blogsController.getBlogs();
     return await Future.delayed(Duration(seconds: 3));
   }

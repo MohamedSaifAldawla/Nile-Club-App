@@ -63,6 +63,7 @@ class OffersScreen extends StatelessWidget {
                           body: '${servicesController.offers[index].note}',
                           title:
                               '${servicesController.offers[index].ticket_type}',
+                          subTitle: '${servicesController.offers[index].title}',
                           height: lang == "ar"
                               ? getProportionateScreenWidth(160)
                               : getProportionateScreenWidth(140),

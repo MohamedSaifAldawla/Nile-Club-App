@@ -40,6 +40,7 @@ class Services {
     this.outputNoFamily,
     this.discountPrice,
     this.ticket_type,
+    this.title,
   });
 
   String? id;
@@ -63,6 +64,7 @@ class Services {
   String? outputNoFamily;
   String? discountPrice;
   String? ticket_type;
+  String? title;
 
   factory Services.fromJson(Map<String, dynamic> json) => Services(
         id: json["id"],
@@ -85,6 +87,7 @@ class Services {
         status: json["status"],
         discountPrice: json["discount_price"],
         ticket_type: json["ticket_type"],
+        title: json["title"],
       );
 }
 
