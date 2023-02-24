@@ -80,10 +80,24 @@ class OffersCard extends StatelessWidget {
                       weight: FontWeight.bold,
                     ),
                     const Gap(3),
-                    BodyText(
-                      text: discount + "  " + newPrice + "SDG".tr,
-                      fontSize: getProportionateScreenWidth(14),
-                      color: kSecondaryColor,
+                    Row(
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            text: discount,
+                            style: TextStyle(
+                              fontSize: getProportionateScreenWidth(14),
+                              color: kSecondaryColor,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          ),
+                        ),
+                        BodyText(
+                          text: "  " + newPrice + "SDG".tr,
+                          fontSize: getProportionateScreenWidth(14),
+                          color: kSecondaryColor,
+                        ),
+                      ],
                     ),
                   ],
                 ),
