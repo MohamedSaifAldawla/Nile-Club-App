@@ -96,13 +96,18 @@ class Wallet extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                      "assets/icons/top-up.svg",
-                      width: getProportionateScreenWidth(25),
-                      height: getProportionateScreenWidth(25),
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? kPrimaryLightColor
-                          : yellow,
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed('wallet');
+                      },
+                      child: SvgPicture.asset(
+                        "assets/icons/top-up.svg",
+                        width: getProportionateScreenWidth(25),
+                        height: getProportionateScreenWidth(25),
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? kPrimaryLightColor
+                            : yellow,
+                      ),
                     ),
                     const Gap(10),
                     InkWell(
@@ -121,13 +126,18 @@ class Wallet extends StatelessWidget {
                       color: kPrimaryLightColor,
                     ),
                     const Gap(10),
-                    SvgPicture.asset(
-                      "assets/icons/Transfer.svg",
-                      width: getProportionateScreenWidth(25),
-                      height: getProportionateScreenWidth(25),
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? kPrimaryLightColor
-                          : yellow,
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed('transfer');
+                      },
+                      child: SvgPicture.asset(
+                        "assets/icons/Transfer.svg",
+                        width: getProportionateScreenWidth(25),
+                        height: getProportionateScreenWidth(25),
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? kPrimaryLightColor
+                            : yellow,
+                      ),
                     ),
                     const Gap(10),
                     InkWell(
