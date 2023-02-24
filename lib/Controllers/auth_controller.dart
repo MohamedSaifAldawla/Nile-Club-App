@@ -52,13 +52,10 @@ class AuthController extends GetxController with BaseController {
           SnackPosition.TOP);
     } else if (res['statuscode'] == 0) {
       await SaveUserData(user);
-      await init();
       isLoggedIn.value = true;
       hideLoading();
       Get.offAllNamed("homepage");
       await profileController.getMembershipsInfo();
-
-      //await profileController.getMembershipsInfo();
     }
   } //end of login
 
@@ -83,7 +80,6 @@ class AuthController extends GetxController with BaseController {
           SnackPosition.TOP);
     } else if (res['statuscode'] == 0) {
       await SaveUserData(user);
-      await init();
       isLoggedIn.value = true;
       hideLoading();
       SnackBar(
@@ -99,7 +95,7 @@ class AuthController extends GetxController with BaseController {
     }
   } //end of register
 
-  //--------------------- Accoun tUpdate --------------------------//
+  //--------------------- Account tUpdate --------------------------//
 
   Future<void> AccountUpdate({required Map<String, dynamic> updateData}) async {
     print(updateData);
@@ -277,45 +273,52 @@ class AuthController extends GetxController with BaseController {
 //--------------------- LogOut --------------------------//
   Future<void> logout() async {
     local_auth.autoLogin = false;
-    await GetStorage().remove('id');
-    await GetStorage().remove('login_token');
-    await GetStorage().remove('account_id');
-    await GetStorage().remove('name');
-    await GetStorage().remove('account_id');
-    await GetStorage().remove('serial');
-    await GetStorage().remove('membership');
-    await GetStorage().remove('ex_date');
-    await GetStorage().remove('img');
+    Future.wait([
+      GetStorage().remove('id'),
+      GetStorage().remove('login_token'),
+      GetStorage().remove('account_id'),
+      GetStorage().remove('name'),
+      GetStorage().remove('account_id'),
+      GetStorage().remove('serial'),
+      GetStorage().remove('membership'),
+      GetStorage().remove('ex_date'),
+      GetStorage().remove('img'),
+    ]);
     isLoggedIn.value = false;
+    await init();
     Get.offAllNamed("login");
+    print("Token : $token");
   } //end of logout
 
 //--------------------- User Local Storage Saving --------------------------//
 
   SaveUserData(Rx<User> user) async {
-    await GetStorage().write('id', user.value.id);
-    await GetStorage().write('name', user.value.name);
-    await GetStorage().write('phone', user.value.phone);
-    await GetStorage().write('isMember', user.value.isMember);
-    await GetStorage().write('login_token', user.value.token);
-    await GetStorage().write('account_id', user.value.account_id);
-    await GetStorage().write('formid', user.value.formid);
-    await GetStorage().write('serial', user.value.serial);
-    await GetStorage().write('balance', user.value.balance);
-    await GetStorage().write('membership', user.value.membership);
-    await GetStorage().write('ex_date', user.value.exDate);
-    await GetStorage().write('img', user.value.img);
-    await GetStorage().write('text', user.value.text);
-    await GetStorage().write('text2', user.value.text2);
+    Future.wait([
+      GetStorage().write('id', user.value.id),
+      GetStorage().write('name', user.value.name),
+      GetStorage().write('phone', user.value.phone),
+      GetStorage().write('isMember', user.value.isMember),
+      GetStorage().write('login_token', user.value.token),
+      GetStorage().write('account_id', user.value.account_id),
+      GetStorage().write('formid', user.value.formid),
+      GetStorage().write('serial', user.value.serial),
+      GetStorage().write('balance', user.value.balance),
+      GetStorage().write('membership', user.value.membership),
+      GetStorage().write('ex_date', user.value.exDate),
+      GetStorage().write('img', user.value.img),
+      GetStorage().write('text', user.value.text),
+      GetStorage().write('text2', user.value.text2),
+    ]);
 
     //------------------- Token Decode -------------------------------//
     Codec<String, String> stringToBase64 = utf8.fuse(base64);
     var parsedtocken = await GetStorage().read('login_token');
     token = stringToBase64.decode(parsedtocken);
     await GetStorage().write('login_token', token);
+    await init();
     if (await token != null) {
-      //await transController.GetHistory();
-      print("Token : ${GetStorage().read("login_token")}");
+      print("Token : $token");
+      await servicesController.getHomeOffers();
       await blogController.getBlogs();
       await profileController.getMembershipsList();
     }

@@ -12,13 +12,15 @@ class OffersCard extends StatelessWidget {
     Key? key,
     required this.newPrice,
     required this.body,
+    required this.title,
+    required this.img,
     required this.discount,
     this.width,
     this.height,
   }) : super(key: key);
   String newPrice;
   String discount;
-  String body;
+  String body, title, img;
   double? width;
   double? height;
   @override
@@ -57,24 +59,29 @@ class OffersCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SvgPicture.asset(
-                  "assets/icons/Discount.svg",
+                // SvgPicture.asset(
+                //   "assets/icons/Discount.svg",
+                //   width: getProportionateScreenWidth(40),
+                //   height: getProportionateScreenWidth(40),
+                //   color: yellow,
+                // ),
+                Image.network(
+                  img,
                   width: getProportionateScreenWidth(40),
                   height: getProportionateScreenWidth(40),
-                  color: yellow,
                 ),
                 const Gap(10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BodyText(
-                      text: "New price".tr + newPrice + "SDG".tr,
+                      text: title,
                       fontSize: getProportionateScreenWidth(15),
                       weight: FontWeight.bold,
                     ),
                     const Gap(3),
                     BodyText(
-                      text: "Original".tr + discount + "SDG".tr,
+                      text: discount + "  " + newPrice + "SDG".tr,
                       fontSize: getProportionateScreenWidth(14),
                       color: kSecondaryColor,
                     ),

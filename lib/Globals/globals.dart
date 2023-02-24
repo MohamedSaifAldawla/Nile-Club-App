@@ -28,7 +28,7 @@ var uid;
 var balance;
 var name;
 var phone;
-var token = GetStorage().read('login_token');
+var token;
 var accountId;
 var isMember;
 var formId;
@@ -60,7 +60,8 @@ Future<void> init() async {
   membership = await GetStorage().read('membership');
   exDate = await GetStorage().read('ex_date');
   img = await GetStorage().read('img');
-  isLive = GetStorage().read("Live");
+  isLive = await GetStorage().read("Live");
+  token = await GetStorage().read('login_token');
 }
 
 final otpInputDecoration = InputDecoration(

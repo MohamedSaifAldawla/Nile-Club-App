@@ -90,12 +90,16 @@ class HomeScreen extends StatelessWidget {
                                           servicesController.offers[index]),
                                 ),
                                 child: OffersCard(
+                                  img:
+                                      '${servicesController.offers[index].img}',
                                   discount:
                                       '${servicesController.offers[index].discountPrice}',
                                   newPrice:
                                       '${servicesController.offers[index].totalPrice}',
                                   body:
                                       '${servicesController.offers[index].note}',
+                                  title:
+                                      '${servicesController.offers[index].ticket_type}',
                                 ),
                               ),
                               separatorBuilder: (context, index) => SizedBox(

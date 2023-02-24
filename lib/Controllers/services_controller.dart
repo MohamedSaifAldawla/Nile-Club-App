@@ -139,15 +139,14 @@ class ServicesController extends GetxController with BaseController {
           ),
           error,
           SnackPosition.TOP);
-      authController.logout();
+      //authController.logout();
     } else {
       ServiceList offersreponse = ServiceList.fromJson(res);
       offers.clear();
       offers.addAll(offersreponse.services);
+      //print("Offers : $res");
       print("Offers : $offers");
     }
-    //hideLoading();
-    //Get.toNamed("offers");
   }
 
   //--------------------- Get Cinema --------------------------//

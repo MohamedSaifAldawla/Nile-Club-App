@@ -114,10 +114,12 @@ Future<void> CheckToken2() async {
     final res = json.decode(response.data);
     if (res['message'] == 'valid token') {
       print("Token : $token");
-      await blogsController.getBlogs();
-      await servicesController.getHomeOffers();
-      await profileController.getMembershipsList();
-      await profileController.getMembershipsInfo();
+      Future.wait([
+        blogsController.getBlogs(),
+        servicesController.getHomeOffers(),
+        profileController.getMembershipsList(),
+        profileController.getMembershipsInfo(),
+      ]);
       Get.offAllNamed("intro");
     }
     if (res['message'] == 'invalid token') {

@@ -102,6 +102,7 @@ class ProfileScreen extends GetView<LanguageController> {
                                 textAlign: TextAlign.start,
                                 maxLines: 2,
                               ),
+                              const Gap(10),
                               BodyText(
                                 text: "${GetStorage().read("text2")}",
                                 color: kSecondaryColor,
